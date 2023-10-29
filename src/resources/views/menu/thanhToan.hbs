@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/pay.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="grid wide oder_pay">
+        <div class="infor_acc">
+            <div class="infor_user_title">
+                <h2>School supplies</h2>
+            </div>
+
+            <div class="infor_pay">
+                <div class="infor">
+                    <div class="infor_user">
+                        <h3 class="infor_title">
+                            Thông tin nhận hàng
+                        </h3>
+                        <div class="user_login">
+                            <a href="" class="user_login_link">
+                                <i class="fa-regular fa-circle-user"></i>
+                                Đăng nhập
+                            </a>
+                        </div>
+                    </div>
+
+                    <form action="/cart/payment" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="email" placeholder="Email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Họ và tên" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="sdt" placeholder="Số điện thoại" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="tinhthanh" id="city" aria-label=".form-select-sm">
+                                <option value="" selected>Chọn tỉnh thành</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="quanhuyen" id="district" aria-label=".form-select-sm">
+                                <option value="" selected>Chọn quận huyện</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="phuongxa" id="ward" aria-label=".form-select-sm">
+                                <option value="" selected>Chọn phường xã</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="ghichu" id="" cols="41" rows="8"
+                                placeholder="Ghi chú (tùy chọn)"></textarea>
+                        </div>
+                </div>
+
+                <div class="tranfer_pay">
+                    <div class="tranfer">
+                        <div class="tranfer_title">
+                            <h3>Vận chuyển</h3>
+                        </div>
+                        <div class="tranfer_message">
+                            <span>Vui lòng nhập thông tin giao hàng</span>
+                        </div>
+                        <div class="tranfer_expense">
+                            <span>Vận chuyển đến tận nơi </span>
+                            <span>40.000Đ</span>
+                        </div>
+                    </div>
+
+                    <div class="pay">
+                        <div class="pay_title">
+                            <h3>Thanh toán</h3>
+                            <div class="check_box">
+                                <input type="checkbox" name="hinhthucthanhtoan" id="payment_1">
+                                <label for="payment_1">Thanh toán khi giao hàng (COD)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="oder_product">
+            <div class="oder_prodcut_title">
+                <h3>Đơn hàng ({{SoLuongSP.SoLuongSP}} Sản phẩm )</h3>
+            </div>
+            {{#each carts}}
+            <div class="product_pay">
+                <div class="product_pay-img">
+                    <img src="{{this.image}}" alt="" width="50px" height="50px">
+                </div>
+                <div class="product_pay_detail">
+                    <div class="product_pay_title">
+                        {{this.name}}
+                    </div>
+                    <div class="product_color_cost">
+                        <div class="product_color">
+                            128/ Tím
+                        </div>
+                        <div class="product_cost">
+                            {{this.giaBan}}đ
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            <div class="code_sale">
+                <input class="code name=""" type="text" placeholder="Nhập mã giảm giá">
+                <input class=" exc name=""ute" type="submit" value="Áp dụng">
+            </div>
+            <div class="cost_caculator">
+                <div class="cost_temporary">
+                    <div> Tạm tính</div>
+                    <span>30.000.000đ</span>
+                </div>
+                <div class="cost_tranfer">
+                    <div>Phí vận chuyển</div>
+                    <span></span>
+                </div>
+            </div>
+            <div class="cost_total">
+                <div>Tổng cộng</div>
+                <span>30.000.000đ</span>
+            </div>
+            <div class="cart_oder">
+                <div class="cart">
+                    <a href="/cart" class="cart-link">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        Quay về giỏ hàng
+                    </a>
+                </div>
+                <div class="oder">
+                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Đặt
+                        hàng</button>
+                </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+    {{!-- modal --}}
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thông Báo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Đặt hàng thành công!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary"><a href="/" style="all: unset;">Mua tiếp</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script>
+        var citis = document.getElementById("city");
+        var districts = document.getElementById("district");
+        var wards = document.getElementById("ward");
+
+        var citisV = document.querySelector("#city option");
+        var districtsV = document.querySelector("#district option");
+        var wardsV = document.querySelector("#ward option");
+
+        var Parameter = {
+            url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+            method: "GET",
+            responseType: "application/json",
+        };
+        var promise = axios(Parameter);
+        promise.then(function (result) {
+            renderCity(result.data);
+        });
+
+        function renderCity(data) {
+            for (const x of data) {
+                citis.options[citis.options.length] = new Option(x.Name, x.Id);
+            }
+            citis.onchange = function () {
+                district.length = 1;
+                ward.length = 1;
+                if (this.value != "") {
+                    const result = data.filter(n => n.Id === this.value);
+
+                    for (const k of result[0].Districts) {
+                        district.options[district.options.length] = new Option(k.Name, k.Id);
+                    }
+                }
+            };
+            district.onchange = function () {
+                ward.length = 1;
+                const dataCity = data.filter((n) => n.Id === citis.value);
+                if (this.value != "") {
+                    const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
+
+                    for (const w of dataWards) {
+                        wards.options[wards.options.length] = new Option(w.Name, w.Id);
+                    }
+                }
+            };
+        }
+        function dathang() {
+            alert("Đặt hàng thành công!");
+        }
+        if (citisV.innerHTML != '' && districtsV.innerHTML != '' && wardsV.innerHTML != '') {
+            citisV.style.value = citisV.innerHTML;
+            districtsV.style.value = districtsV.innerHTML;
+            wardsV.style.value = wardsV.innerHTML;
+        }
+
+    </script>
+</body>
+
+</html>

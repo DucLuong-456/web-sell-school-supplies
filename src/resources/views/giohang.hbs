@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/giohang.css">
+</head>
+
+<body>
+    <div class="giohang">
+        <div class="title-block-page">
+            <h1 class="title-head">Giỏ hàng của bạn</h1>
+        </div>
+
+        <div class="cart-header-info">
+            <div>Thông tin sản phẩm</div>
+            <div>Đơn giá</div>
+            <div>Số lượng</div>
+            <div>Thành tiền</div>
+        </div>
+        {{#each products}}
+        <div class="cart-item">
+            <div class="cart-product">
+                <div class="cart-img">
+                    <img src="{{this.image}}" alt="">
+                </div>
+                <div class="cart-infor">
+                    <div class="cart-name">
+                        <a href="#" class="name">{{this.name}}</a>
+                        <br>
+                        <form action="/cart/deletecart?_method=DELETE" method="POST">
+                            <input type="text" value="{{this._id}}" name="id" hidden>
+                            <button type="submit"
+                                style="color: red; border: none; text-decoration: none; background-color: #ffff">Xóa</button>
+                        </form>
+                    </div>
+                    <div class="grid_cot">
+                        <div class="grid-item">
+                            <span class="dongia">{{this.giaBan}}</span>
+                        </div>
+                    </div>
+                    <div class="grid_cot">
+                        <div class="grid-item">
+                            <span class="soluong">{{this.soLuong}}</span>
+                        </div>
+                    </div>
+                    <div class="grid_cot">
+                        <div class="grid-item">
+                            <span class="thanhtien"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        {{/each}}
+        <div class="row">
+            <div class="col">
+                <div class="tongtien">
+                    Tổng tiền:
+                    <span>39.000.0000</span>
+                </div>
+                <div class="thanhtoan">
+                    <button><a href="/cart/pay">Thanh toán</a></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+<script>
+    var giaban = document.querySelectorAll('.dongia');
+    var arr_giaban = [];
+    for (var i = 0; i < giaban.length; i++)
+        arr_giaban[i] = parseFloat(giaban[i].innerHTML);
+
+    for (var i = 0; i < giaban.length; i++)
+        giaban[i].innerHTML = (new Intl.NumberFormat('vi', { style: 'currency', currency: 'VND' }).format(parseFloat(giaban[i].innerHTML)));
+
+    var soluong = document.querySelectorAll('.soluong');
+    var thanhtien = document.querySelectorAll('.thanhtien');
+    let s = 0;
+    for (var i = 0; i < giaban.length; i++) {
+        s += arr_giaban[i] * parseFloat(soluong[i].innerHTML);
+        thanhtien[i].innerHTML = (new Intl.NumberFormat('vi', { style: 'currency', currency: 'VND' }).format(parseFloat(arr_giaban[i] * parseFloat(soluong[i].innerHTML))));
+    }
+    var total = document.querySelector('.tongtien span').innerHTML = (new Intl.NumberFormat('vi', { style: 'currency', currency: 'VND' }).format(parseFloat(s)));
+</script>
+
+</html>

@@ -1,0 +1,423 @@
+<div class="app">
+    <div class="grid wide">
+        <div class="slide_sale">
+            <div class="slide_sale_main">
+                <a href="">
+                    <div class="slide_sale_main_element active_slide">
+                        <img src="img/slide_main-1.png" alt="" class="element_img">
+                    </div>
+                </a>
+                <a href="">
+                    <div class="slide_sale_main_element">
+                        <img src="img/slide_main-2.jfif" alt="" class="element_img">
+                    </div>
+                </a>
+                <a href="">
+                    <div class="slide_sale_main_element">
+                        <img src="img/slide_main-1.png" alt="" class="element_img">
+                    </div>
+                </a>
+                <a href="">
+                    <div class="slide_sale_main_element">
+                        <img src="img/slide_main-2.jfif" alt="" class="element_img">
+                    </div>
+                </a>
+                <div class="option_slide">
+                    <i class="option_icon fa-solid fa-circle-dot active_slide"></i>
+                    <i class="option_icon fa-solid fa-circle-dot"></i>
+                    <i class="option_icon fa-solid fa-circle-dot"></i>
+                    <i class="option_icon fa-solid fa-circle-dot"></i>
+                </div>
+
+            </div>
+            <div class="slide_sale_extra">
+                <a href="">
+                    <div class="sale_extra_element">
+                        <img src="/img/slide_main-1.png" alt="" class="extra_element_img">
+                    </div>
+                </a>
+                <a href="">
+                    <div class="sale_extra_element">
+                        <img src="/img/slide_main-1.png" alt="" class="extra_element_img">
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="products_container">
+
+            <div class="flashsale">
+                <!--header flashsale-->
+                <div class="flashsale-header">
+
+                    <a href="#" class="title">
+                        <img src="./img/ico_flashsale@3x.png" style="width: 25px; height: 25px;margin-left: 10px;">
+                        <div class="flashsale-header-title">FLASH SALE</div>
+                    </a>
+
+                    <span>
+                        <div class="split"></div>
+                    </span>
+
+                    <span class="flashsale-page-countdown-label">Kết Thúc Trong</span>
+
+                    <div class="flashsale-page-countdown">
+                        <div class="flashsale-countdown">
+                            <span class="flashsale-countdown-number" id="h">00</span>
+                            <span>:</span>
+                            <span class="flashsale-countdown-number" id="m">00</span>
+                            <span>:</span>
+                            <span class="flashsale-countdown-number" id="s">00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--phan body-->
+                <div class="flashsale-body">
+                    <div class="list-item">
+                        {{#each books}}
+                        <div class="item">
+                            <a class="name-item-link" href="/book/dodunghoctap/{{this.slug}}">
+                                <img class="img-item" src="{{this.image}}" alt="">
+                                <h5 class="name-item">{{this.name}} <br></h5>
+                                <h4 class="cost-item">{{this.giaban}}đ</h4>
+                                <h5 class="cost-base">75.0000</h5>
+                                <h5 class="slban">Đã Bán {{this.soluongton}}</h5>
+                            </a>
+                        </div>
+                        {{/each}}
+
+                    </div>
+                    <!--//xem them-->
+                    <div class="xem-them">
+                        Xem Thêm
+                    </div>
+                </div>
+
+            </div>
+            <div class="product_list">
+                <div class="header_danhmuc">
+                    <img src="./img/icon_danhmuc.JPG" alt="">
+                    <h2>Danh mục sản phẩm</h2>
+                </div>
+                <div class="body_danhmuc">
+                    <a href="" class="item_product_link">
+                        <div class="item_danhmuc">
+
+                            <img src="./img/img_danhmucsp/100x100_balo.png" alt="">
+                            <span>Balo</span>
+
+
+                        </div>
+                    </a>
+                    <a href="" class="item_product_link">
+                        <div class="item_danhmuc">
+
+                            <img src="./img/img_danhmucsp/100x100_but.png" alt="">
+                            <span>Bút</span>
+
+
+                        </div>
+                    </a>
+                    <a href="" class="item_product_link">
+                        <div class="item_danhmuc">
+
+                            <img src="./img/img_danhmucsp/100x100_tap.png" alt="">
+                            <span>Tập</span>
+
+
+                        </div>
+                    </a>
+                    <a href="" class="item_product_link">
+                        <div class="item_danhmuc">
+
+                            <img src="./img/img_danhmucsp/foreign-books.png" alt="">
+                            <span>Sách tham <br> khảo</span>
+
+
+                        </div>
+                    </a>
+                    <a href="" class="item_product_link">
+                        <div class="item_danhmuc">
+
+                            <img src="./img/img_danhmucsp/kinh-te.png" alt="">
+                            <span>Tiểu thuyết</span>
+
+
+                        </div>
+                    </a>
+                    <a href="" class="item_product_link">
+                        <div class="item_danhmuc">
+
+                            <img src="./img/img_danhmucsp/Sach-hoc-ngoai-ngu.jpg" alt="">
+                            <span>Sách tiếng anh</span>
+
+
+                        </div>
+                    </a>
+                    <a href="" class="item_product_link">
+                        <div class="item_danhmuc">
+
+                            <img src="./img/img_danhmucsp/Sach-tham-khao.jpg" alt="">
+                            <span>Ngữ pháp</span>
+
+
+                        </div>
+                    </a>
+                    <a href="" class="item_product_link">
+                        <div class="item_danhmuc">
+
+                            <img src="./img/img_danhmucsp/foreign-books.png" alt="">
+                            <span>Balo</span>
+
+
+                        </div>
+                    </a>
+                    <a href="" class="item_product_link">
+                        <div class="item_danhmuc">
+                            <img src="./img/img_danhmucsp/100x100_balo.png" alt="">
+                            <span>Balo</span>
+                        </div>
+                    </a>
+                    <a href="" class="item_product_link">
+                        <div class="item_danhmuc">
+                            <img src="./img/img_danhmucsp/van-hoc.png" alt="">
+                            <span>Truyện</span>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            <div class="content-products-school-supplies">
+                <div id="tiltle1" class="title-product">
+                    <div class="product-item active">
+                        <span href="" class="product-tiltle   "> Bút bi </span>
+                    </div>
+                    <div class="product-item ">
+                        <span href="" class=" product-tiltle "> Bút chì </span>
+                    </div>
+                    <div class="product-item ">
+                        <span href=" " class=" product-tiltle "> Bút đặc biệt</span>
+                    </div>
+                </div>
+                <div style="margin-left: 12px;" class="row">
+                    {{#each fashions}}
+                    <div class=" content-product-list c-2-5 ">
+                        <a class="content-product-item link" href="/book/docongnghe/{{this.slug}}">
+                            <div class="content-product-item__img" style="background-image: url({{this.image}});">
+                            </div>
+                            <h5 class="content-product-item__name">{{this.name}}
+                            </h5>
+                            <div class="content-product-item__price">
+                                <div class="content-product-item__price-current">{{this.giaBan}}đ</div>
+                                <div class="content-product-item__price-old">25.000đ</div>
+                            </div>
+                            <div class="content-product-item__sale-off">
+                                <span class="content-product-item__sale-off-percent">-10%</span>
+                            </div>
+                            <div class="content-product-item__action">
+                                <div class="content-product-item__rating">
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <span style="color:orange;">(4) </span>
+                                </div>
+
+
+                            </div>
+
+
+                        </a>
+                    </div>
+                    {{/each}}
+
+
+
+                </div>
+                <div class="content-products-more">
+                    <button class="btn content-products-more-btn">Xem thêm</button>
+                </div>
+
+            </div>
+            <div class="content-products-school-supplies">
+                <div id="tiltle2" class="title-product">
+                    <div class="product-item active">
+                        <span href="" class="product-tiltle "> Sách kinh tế </span>
+                    </div>
+                    <div class="product-item ">
+                        <span href="" class="product-tiltle "> Sách kỹ thuật </span>
+                    </div>
+                    <div class="product-item ">
+                        <span href=" " class="product-tiltle "> Sách đại cương</span>
+                    </div>
+                </div>
+                <div style="margin-left: 12px;" class="row row_product">
+                    <div class=" content-product-list c-2-5 ">
+                        <a class="content-product-item link" href="#">
+                            <div class="content-product-item__img"
+                                style="background-image: url(https://cdn0.fahasa.com/media/catalog/product/8/9/8935280912540.jpg);">
+                            </div>
+                            <h5 class="content-product-item__name"> Hãy hỏi trái tim mình
+                            </h5>
+                            <div class="content-product-item__price">
+                                <div class="content-product-item__price-current">40.500đ</div>
+                                <div class="content-product-item__price-old">49.000đ</div>
+                            </div>
+                            <div class="content-product-item__sale-off">
+                                <span class="content-product-item__sale-off-percent">-10%</span>
+                            </div>
+                            <div class="content-product-item__action">
+                                <div class="content-product-item__rating">
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <span style="color:orange;">(4)</span>
+                                </div>
+
+
+                            </div>
+
+
+                        </a>
+                    </div>
+
+                    <div class=" content-product-list c-2-5 ">
+                        <a class="content-product-item link" href="#">
+                            <div class="content-product-item__img"
+                                style="background-image: url(https://cdn0.fahasa.com/media/catalog/product/8/9/8936067605471.jpg);">
+                            </div>
+                            <h5 class="content-product-item__name">Giá trong chiến lược kinh doanh
+                            </h5>
+                            <div class="content-product-item__price">
+                                <div class="content-product-item__price-current">60.500đ</div>
+                                <div class="content-product-item__price-old">65.000đ</div>
+                            </div>
+                            <div class="content-product-item__sale-off">
+                                <span class="content-product-item__sale-off-percent">-10%</span>
+                            </div>
+                            <div class="content-product-item__action">
+                                <div class="content-product-item__rating">
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <span style="color:orange;">(4)</span>
+                                </div>
+
+
+                            </div>
+
+
+                        </a>
+                    </div>
+
+                    <div class=" content-product-list c-2-5 ">
+                        <a class="content-product-item link" href="#">
+                            <div class="content-product-item__img"
+                                style="background-image: url(	https://cdn0.fahasa.com/media/catalog/product/8/9/8936066693974.jpg);">
+                            </div>
+                            <h5 class="content-product-item__name">Kỹ thuật phân tích dầu tư chứng khoán
+                            </h5>
+                            <div class="content-product-item__price">
+                                <div class="content-product-item__price-current">90.000đ</div>
+                                <div class="content-product-item__price-old">100.000đ</div>
+                            </div>
+                            <div class="content-product-item__sale-off">
+                                <span class="content-product-item__sale-off-percent">-10%</span>
+                            </div>
+                            <div class="content-product-item__action">
+                                <div class="content-product-item__rating">
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <span style="color:orange;">(4)</span>
+                                </div>
+
+
+                            </div>
+
+
+                        </a>
+                    </div>
+
+                    <div class=" content-product-list c-2-5 ">
+                        <a class="content-product-item link" href="#">
+                            <div class="content-product-item__img"
+                                style="background-image: url(	https://cdn0.fahasa.com/media/catalog/product/i/m/image_195509_1_26401_1.jpg);">
+                            </div>
+                            <h5 class="content-product-item__name">Đời quảng cáo
+                            </h5>
+                            <div class="content-product-item__price">
+                                <div class="content-product-item__price-current">90.500đ</div>
+                                <div class="content-product-item__price-old">90.000đ</div>
+                            </div>
+                            <div class="content-product-item__sale-off">
+                                <span class="content-product-item__sale-off-percent">-10%</span>
+                            </div>
+                            <div class="content-product-item__action">
+                                <div class="content-product-item__rating">
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <span style="color:orange;">(4)</span>
+                                </div>
+
+
+                            </div>
+
+
+                        </a>
+                    </div>
+
+                    <div class=" content-product-list c-2-5 ">
+                        <a class="content-product-item link" href="#">
+                            <div class="content-product-item__img"
+                                style="background-image: url(	https://cdn0.fahasa.com/media/wysiwyg/Thang-09-2022/BannerBlock09_KinhTe_350x415.jpg);">
+                            </div>
+                            <h5 class="content-product-item__name">Từ khởi nghiệp đến đại diện toàn cầu
+                            </h5>
+                            <div class="content-product-item__price">
+                                <div class="content-product-item__price-current">90.500đ</div>
+                                <div class="content-product-item__price-old">100.000đ</div>
+                            </div>
+                            <div class="content-product-item__sale-off">
+                                <span class="content-product-item__sale-off-percent">-10%</span>
+                            </div>
+                            <div class="content-product-item__action">
+                                <div class="content-product-item__rating">
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <i class=" fas fa-star star"></i>
+                                    <span style="color:orange;">(4)</span>
+                                </div>
+
+
+                            </div>
+
+
+                        </a>
+                    </div>
+
+                </div>
+                <div class="content-products-more">
+                    <button type="submit" class="btn content-products-more-btn">Xem thêm</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./main.js">
+
+</script>

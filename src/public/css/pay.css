@@ -1,0 +1,213 @@
+html {
+    background-color: #fff;
+}
+
+.infor_user_title {
+    color: #44a9d5;
+}
+
+.oder_pay {
+    display: flex;
+    justify-content: space-between;
+}
+
+.infor_pay {
+    display: flex;
+}
+
+.infor_acc {
+    border-right: 1px solid #b3b3b3;
+}
+
+.tranfer_expense {
+    display: none;
+}
+
+.infor_user {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.infor_title {
+    font-weight: 700;
+}
+
+.user_login_link {
+    text-decoration: none;
+    color: #44a9d5;
+}
+
+.form-group {
+    margin: 15px 0;
+}
+
+.form-control {
+    width: 325px;
+    height: 35px;
+    padding: 5px 10px;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    outline: none;
+}
+
+.form-control:hover {
+    border-color: #44a9d5;
+}
+
+.tranfer_pay {
+    margin-left: 100px;
+    margin-top: 10px;
+    margin-right: 80px;
+}
+
+.tranfer_message {
+    margin: 15px 0;
+    background-color: #a3d9f0;
+    width: 325px;
+    height: 35px;
+    padding: 5px 10px;
+    line-height: 20px;
+}
+
+.check_box {
+    margin: 15px 0;
+    width: 325px;
+    height: 35px;
+    padding: 5px 10px;
+    border: 1px solid #b3b3b3;
+    line-height: 20px;
+    border-radius: 3px;
+}
+
+#payment_1 {
+    margin-right: 5px;
+}
+
+.oder_product {
+    flex: 1;
+}
+
+.oder_prodcut_title {
+
+    padding: 20px;
+    border-bottom: 1px solid #b3b3b3;
+}
+
+.product_pay {
+    display: flex;
+    padding-bottom: 10px;
+    margin: 15px 0 20px 20px;
+    border-bottom: 1px solid #b3b3b3;
+}
+
+.product_pay_detail {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 15px;
+    justify-content: center;
+}
+
+.product_pay_title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.product_color_cost {
+    display: flex;
+    justify-content: space-between;
+    color: #b3b3b3;
+}
+
+.code_sale {
+    margin: 10px 0 10px 20px;
+    border-bottom: 1px solid #b3b3b3;
+    padding-bottom: 20px;
+}
+
+.code {
+    width: 200px;
+    height: 35px;
+    padding: 10px;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    outline: none;
+}
+
+.code:hover {
+    border-color: #44a9d5;
+}
+
+.excute {
+    width: 100px;
+    height: 35px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: #44a9d5;
+    color: #fff;
+    cursor: pointer;
+}
+
+.excute:hover {
+    opacity: 0.7;
+}
+
+.cost_caculator {
+    margin-left: 20px;
+    border-bottom: 1px solid #b3b3b3;
+    padding-bottom: 10px;
+}
+
+.cost_temporary {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cost_total {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cost_total span {
+    color: #44a9d5;
+    font-size: 24px;
+}
+
+.cart_oder {
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-link {
+    text-decoration: none;
+    color: #44a9d5;
+}
+
+.cart-link i {
+    font-size: 14px;
+}
+
+.oder button {
+    width: 100px;
+    height: 35px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: #44a9d5;
+    color: #fff;
+    cursor: pointer;
+}
+
+.oder button:hover {
+    opacity: 0.7;
+}

@@ -1,0 +1,36 @@
+<div class="mt-4" style="width: 600px;">
+    <h3 style="margin-left: 40px;">Cập nhật Thông tin người dùng</h3>
+    <form method="POST" action="/user/{{user._id}}?_method=PUT">
+
+        <div class="chia-cot">
+            <div class="cot1">
+                <div class="mb-3">
+                    <label for="name" class="form-label">User name:</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" value="{{user.name}}"
+                        name="name">
+                    <br>
+
+                    <label for="Email" class="form-label">Email:</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" value="{{user.email}}"
+                        name="Email">
+                    <br>
+
+                    <label for="Adress" class="form-label">Adress:</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" value="{{user.address}}"
+                        name="address">
+
+                    <br>
+
+                    <label for="phone" class="form-label">Phone Number:</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" value="{{user.phone_number}}"
+                        name="phone_number">
+                </div>
+
+            </div>
+
+
+        </div>
+        <button type="submit" class="mb-3 btn btn-primary">Lưu lại</button>
+    </form>
+
+</div>

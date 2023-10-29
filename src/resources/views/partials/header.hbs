@@ -1,0 +1,266 @@
+<style>
+    #search-input {
+        position: relative;
+    }
+
+    #product-list {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: gray;
+        width: 200px;
+        position: absolute;
+        top: 70px;
+        z-index: 1;
+    }
+
+    #product-list .product_item_search {
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid #f8f8f8;
+        width: 590px;
+        background-color: #fff;
+        padding: 7px 5px;
+        font-size: 14px;
+        list-style: none;
+    }
+
+    .product_image {
+        width: 70px;
+        height: 70px;
+    }
+
+    .product_image img {
+        border: 0 none;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .product_item_text {
+        margin-top: 5px;
+    }
+
+    .fa-bell:hover,
+    .fa-cart-shopping:hover,
+    .fa-user:hover {
+        color: #008cff;
+    }
+</style>
+<div class="header">
+    <div class=" header_navbar">
+        <div class="grid wide flex-header">
+            <div class="header_banner">
+                <a href="/" class="hbanner_link">School supplies</a>
+            </div>
+
+            <div class="header_search flex">
+                <div class="search_input">
+                    <input id="search-input" type="text" class="search_input" placeholder="Tìm kiếm">
+                </div>
+                {{!-- search product --}}
+                <ul id="product-list">
+                    {{#each books}}
+                    <li>
+                        <div class="product_item_search">
+                            <div class="product_image">
+                                <img src="{{this.image}}" alt="but chi">
+                            </div>
+                            <div class="product_item_text" style="margin-left: 10px;">
+                                <span style="color: black;" class="product_name_search"><a
+                                        href="/book/dodunghoctap/{{this.slug}}">{{this.name}}</a></span>
+                                <br>
+                                <span style="color: orangered;">{{this.giaban}} đ</span>
+                            </div>
+                        </div>
+                    </li>
+                    {{/each}}
+                    {{#each fashions}}
+                    <li>
+                        <div class="product_item_search">
+                            <div class="product_image">
+                                <img src="{{this.image}}" alt="but chi">
+                            </div>
+                            <div class="product_item_text" style="margin-left: 10px;">
+                                <span style="color: black;" class="product_name_search"><a
+                                        href="/book/docongnghe/{{this.slug}}">{{this.name}}</a></span>
+                                <br>
+                                <span style="color: orangered;">{{this.giaBan}} đ</span>
+                            </div>
+                        </div>
+                    </li>
+                    {{/each}}
+
+                </ul>
+
+
+                <div class="search_icon">
+                    <i class=" fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+
+            <div class="header_user flex">
+                <div class="header_user_notify">
+                    <div class="user_notify_icon mar-bot-5">
+                        <i class="fa-regular fa-bell"></i>
+                    </div>
+
+                    <div class="user_notify_title">
+                        <p class=""> Thông báo</p>
+                    </div>
+
+                    <div class="user_notify_list">
+
+                        <div class="notify_list_tiltle">
+                            <i class="fa-regular fa-bell "></i>
+                            <span style="margin-left: 5px;">Thông báo</span>
+
+                        </div>
+                        <div class="notify_img">
+                            <img src="img/khoa.jfif" alt="" width="100px" height="100px">
+                        </div>
+                        <div class="notify_err">
+                            <span>Vui lòng đăng nhập để nhận thông báo</span>
+                        </div>
+                        <div style="margin-left: 10px; ">
+                            <a href="/user/register">
+                                <button type="button" title="Đăng ký" class="user_register" onclick="MyFunction()"
+                                    style="background-color: rgb(172, 13, 13) ;">
+                                    <span>Đăng ký</span>
+                                </button>
+                            </a>
+                        </div>
+                        <div style="margin-left: 10px;">
+                            <a href="/user/login">
+                                <button type="button" title="Đăng nhập" class="user_login"
+                                    style="border: 1px solid rgb(150, 5, 5); color:rgb(150, 5, 5)">
+                                    <span>Đăng nhập</span>
+                                </button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="header_user_cart">
+                    <div class="user_cart_icon mar-bot-5">
+                        <a href="/cart">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
+
+                    </div>
+
+                    <div class="user_cart_title">
+                        <p>Giỏ hàng</p>
+                    </div>
+
+                </div>
+
+                <div class="header_user_acc">
+                    <div class="user_acc mar-bot-5">
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+                    <div class="user_name">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" style="unset:all" data-toggle="dropdown">Tài khoản</a>
+                            <div class="dropdown-menu">
+                                {{!-- <a class="dropdown-item" href="/user/register">Đăng ký</a>
+                                <a class="dropdown-item" href="/user/login">Đăng nhập</a> --}}
+                                <a class="dropdown-item" href="/me/stored/books">Quản lý sản phẩm</a>
+                                <a class="dropdown-item" href="/book/create">Đăng sản phẩm mới</a>
+                                <a class="dropdown-item" href="/me/stored/carts">Quản lý đơn hàng</a>
+                                <a class="dropdown-item" href="/me/stored/users">Quản lý người dùng</a>
+                                <a class="dropdown-item" href="/user/logout">Đăng Xuất</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user_connects_list">
+                        <div>
+                            <a href="/user/register">
+                                <button type="button" title="Đăng ký" class="user_register"
+                                    style=" background-color: rgb(172, 13, 13) ;">
+                                    <span>Đăng ký</span>
+                                </button>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="/user/login">
+                                <button type="button" title="Đăng nhập" class="user_login"
+                                    style="border: 1px solid rgb(150, 5, 5); color:rgb(150, 5, 5)">
+                                    <span>Đăng nhập</span>
+                                </button>
+                            </a>
+                        </div>
+                        <div>
+                            <button class="user_login_face  " style="background-color:  #008cff;">
+                                <i class="fa-brands fa-facebook"></i>
+                                <span>Đăng nhập bằng Facebook</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=" header_menu">
+        <div class="grid wide header_menu_list">
+            <div class="menu_item"><a href="" class="link_menu_item">Danh mục sản phẩm</a></div>
+            <div class="menu_item"><a href="/" class="link_menu_item">Trang chủ</a></div>
+            <div class="menu_item"><a href="" class="link_menu_item">Giới thiệu</a></div>
+            <div class="menu_item"><a href="" class="link_menu_item">Sản phẩm mới</a></div>
+            <div class="menu_item"><a href="/menu/tuyendung" class="link_menu_item">Tin tức</a></div>
+            <div class="menu_item"><a href="/menu/lienhe" class="link_menu_item">Liên hệ</a></div>
+            <div class="menu_item"><a href="" class="link_menu_item">Khuyến mãi</a></div>
+        </div>
+    </div>
+</div>
+<script>
+
+    //thong tin tai khoan
+    var user_func = document.querySelector('.user_connects_list');
+    var user_infor = document.querySelector('.user_name a');
+    var user_notify_list = document.querySelector('.user_notify_list');
+    //lay thong tin tai khoan
+    try {
+        //https://nckh-ecommerce-web.onrender.com su dung khi deloy
+        fetch("http://localhost:3000/user/getUserInfor")
+            .then(res => res.json())
+            .then(data => {
+                user_infor.innerHTML = data.UserInfor.username;
+                if (user_infor.innerHTML != 'Tài khoản') {
+                    user_func.style.display = 'none';
+                    user_notify_list.style.display = 'none';
+
+                }
+            })
+
+    } catch (err) { console.log(err.message) }
+    //chuc nang tim kiem san pham
+
+    var product_list = document.querySelector('#product-list');
+    product_list.style.display = 'none';
+    // Lấy giá trị từ ô nhập liệu
+    var search_input = document.getElementById("search-input");
+    search_input.addEventListener('input', function (e) {
+        // Lấy danh sách sản phẩm
+        if (e.target.value)
+            product_list.style.display = 'block';
+        else
+            product_list.style.display = 'none';
+        // Duyệt qua danh sách sản phẩm
+        var products = document.getElementById("product-list").getElementsByTagName("li");
+        var productsName = document.querySelectorAll('.product_name_search');
+
+        for (var i = 0; i < products.length; i++) {
+            var productName = productsName[i].textContent.toLowerCase();
+
+            // Kiểm tra nếu từ khóa xuất hiện trong tên sản phẩm
+            if (productName.includes(e.target.value.toLowerCase())) {
+                products[i].style.display = "block";
+            } else {
+                products[i].style.display = "none";
+            }
+        }
+
+    });
+
+
+</script>

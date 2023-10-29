@@ -1,0 +1,299 @@
+@import 'variables';
+h1{
+    color: red;
+}
+.banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d94566;
+}
+.chia-cot{
+    display: flex;
+}
+.mb-3{
+    margin-left: 20px;
+}
+.card-item{
+    margin-top: 20px;
+    
+}
+.card-title{
+    color: #2489F4;
+}
+.book_name{
+    color: #2489F4;
+}
+.fa-star{
+    color: #ffb323;
+}
+#header_title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    color: rgb(41, 0, 128);
+}
+.Book_detail{
+    display: flex;
+}
+.book_text_con{
+    display: flex;
+    justify-content: space-around;
+}
+.info_tg{
+    margin-left: 30px;
+}
+
+.sl{
+    border: 1px solid #000;
+    padding: 5px 20px;
+    border-radius: 10px;
+    margin-left: 30px;
+}
+
+#footer{
+    margin-top: 10px;
+}
+
+.register{
+    display: flex;
+    padding: 5px 20px;
+    border: 1px solid #000;
+    background-color: #9fa7ab;
+    justify-content: center;
+    align-items: center;
+}
+
+.register h3{
+    color: white;
+}
+
+.footer_text_box{
+    margin-left: 30px;
+
+}
+
+.info_footer{
+    width: 25%;
+    margin-left: 20px;
+}
+.info_footer ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.info_footer ul li{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: left;
+}
+.text_footer{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import 'variables';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f3f3f3;
+}
+
+
+.header_navbar {
+    width: 100%;
+    height: 80px;
+    background-image: linear-gradient(0, rgb(0, 140, 255), rgb(0, 174, 255));
+}
+
+.header_banner a {
+    text-decoration: none;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #fff;
+}
+
+.header_search {
+    background-color: #fff;
+    width: 500px;
+    height: 35px;
+    border-radius: 3px;
+}
+
+.search_input {
+    padding: 2px;
+    flex: 1;
+
+}
+
+.search_input input {
+    outline: none;
+    border: none;
+    padding: 8px;
+    width: 400px;
+    font-size: 14px;
+}
+
+.search_icon {
+    padding: 6px 20px;
+    color: #fff;
+    background-color: #008cff;
+    margin: 0 3px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.search_icon:hover {
+    opacity: 0.8;
+}
+
+.header_user_notify,
+.header_user_cart,
+.header_user_acc {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+    color: #fff;
+    position: relative;
+    cursor: pointer;
+}
+
+//notify
+
+.user_notify_list {
+    display: none;
+    position: absolute;
+    background: #fff;
+    top: 65px;
+    width: 300px;
+    right: 0px;
+    color: #000;
+    padding: 10px 15px;
+    border-radius: 3px;
+}
+
+.notify_list_tiltle {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.notify_img,
+.notify_err {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.header_user_notify:hover .user_notify_list {
+    display: block;
+}
+
+.header_user_notify::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 70px;
+    height: 25px;
+    top: 40px;
+    left: 0px;
+}
+
+.header_user_notify::before {
+    content: "";
+    position: absolute;
+    display: block;
+
+    width: 70px;
+    height: 25px;
+    top: -20px;
+    left: 0px;
+}
+
+// acc
+
+.header_user_acc {
+    cursor: pointer;
+    position: relative;
+}
+
+.header_user_acc::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 70px;
+    height: 25px;
+    top: 40px;
+    left: 0px;
+}
+
+.header_user_acc::before {
+    content: "";
+    position: absolute;
+    display: block;
+
+    width: 70px;
+    height: 25px;
+    top: -20px;
+    left: 0px;
+}
+
+.user_connects_list {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    list-style-type: none;
+    color: #000;
+    top: 65px;
+    right: -5px;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 10px 25px;
+    border-radius: 5px;
+
+}
+
+.header_user_acc:hover .user_connects_list {
+    display: block;
+}
+
+.user_login,
+.user_login_face,
+.user_register {
+    width: 250px;
+    height: 30px;
+    line-height: 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    color: #fff;
+    border: none;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.user_login:hover,
+.user_login_face:hover,
+.user_register:hover {
+    font-size: 14px;
+    line-height: 8px;
+}

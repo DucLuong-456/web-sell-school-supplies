@@ -1,0 +1,22 @@
+.tuyendung{
+    width: 1200px;
+    font-family: "Roboto",sans-serif;
+    margin: 10px auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+.title-head{
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0 0 15px;
+    border-bottom: solid 2px #eb3e32;
+    padding-bottom: 20px;
+    line-height: 1.4;
+}
+
+p{
+    font-size: 14px;
+    color: #323c42;
+    line-height: 1.7;
+}

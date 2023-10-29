@@ -1,0 +1,70 @@
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="/">Logo</a>
+    <div class="dropdown">
+        <button id="taikhoan" class="btn btn-secondary dropdown-toggle user_name" type="button" data-toggle="dropdown"
+            aria-expanded="false">
+            {{userInfor.username}}
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="/user/register">Đăng ký</a>
+            <a class="dropdown-item" href="/user/login">Đăng nhập</a>
+            <a class="dropdown-item" href="/me/stored/books">Quản lý kho sách</a>
+            <a class="dropdown-item" href="/book/create">Đăng sách mới</a>
+            <a class="dropdown-item" href="/user/logout">Đăng Xuất</a>
+        </div>
+    </div>
+</nav>
+<div class="mt-4">
+    <h1>Sách</h1>
+    <div class="row">
+        {{#each books}}
+        <div class="col-sm-6 col-lg-4">
+            <div class="card card-item">
+                <a href="/book/dodunghoctap/{{this.slug}}">
+                    <img src="{{this.image}}" class="card-img-top" alt="{{this.name}}">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{this.name}}</h5>
+                    <p class="card-text">{{this.giaban}} đ</p>
+                    <a href="#" class="btn btn-primary">Mua Sách</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <h1>Đồ công nghệ</h1>
+    <div class="row">
+        {{#each fashions}}
+        <div class="col-sm-6 col-lg-4">
+            <div class="card card-item">
+                <a href="/book/docongnghe/{{this.slug}}">
+                    <img src="{{this.image}}" class="card-img-top" alt="{{this.name}}">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{this.name}}</h5>
+                    <p class="card-text">{{this.giaban}} đ</p>
+                    <a href="#" class="btn btn-primary">Mua Sách</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+
+</div>
+
+<script>
+    var listMenu = document.getElementsByClassName('dropdown-item');
+    var a = document.querySelector('#taikhoan').innerText;
+    var z = a.trim();
+    if (z != 'tài khoản') {
+        listMenu[0].style.display = 'none';
+        listMenu[1].style.display = 'none';
+    }
+
+    if (z == 'tài khoản') {
+        listMenu[0].style.display = 'block';
+        listMenu[1].style.display = 'block';
+    }
+
+</script>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fonts/fontawesome-free-6.0.0-web/css/all.min.css">
+    {{!--
+    <link rel="stylesheet" href="/css/grid.css"> --}}
+    <link rel="stylesheet" href="/css/chiTietSP.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="grid wide">
+        <div class="product-path">
+            <span>Đồ dùng <i class="fa-solid fa-angle-right"></i> Bút <i class="fa-solid fa-angle-right"></i>Bút
+                bi</span>
+        </div>
+        <div class=" product_detail">
+            <div class="product">
+                <div class="product_img" style="background-image: url({{data.image}});">
+
+                </div>
+                <div class="product_intro">
+                    <div class="product_title">
+                        <h2>{{data.name}}</h2>
+                    </div>
+                    <div class="product_detail_infor">
+                        <div class="product_infor_1">
+                            <div class="product_supplier">
+                                <span>Nhà cung cấp :</span>
+                                <span style="font-weight: 700;">{{data.nhaCungCap}}</span>
+                            </div>
+                            <div class="product_author">
+                                <span>Thương hiệu :</span>
+                                <span style="font-weight: 700;">{{data.thuongHieu}}</span>
+                            </div>
+                        </div>
+                        <div class="product_infor_2">
+                            <div class="product_trademark">
+                                <span>Xuất xứ :</span>
+                                <span style="font-weight: 700;">{{data.xuatXu}}</span>
+                            </div>
+                            <div class="product_form">
+                                <span></span>
+                                <span style="font-weight: 700;"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product_rating">
+                        <i class=" fas fa-star star"></i>
+                        <i class=" fas fa-star star"></i>
+                        <i class=" fas fa-star star"></i>
+                        <i class=" fas fa-star star"></i>
+                        <i class=" fas fa-star star"></i>
+                        <span style="color:orange;">(0) Đánh giá</span>
+
+                    </div>
+                    <div class="product_cost">
+                        <div class="cost_current">
+                            <span>{{data.giaBan}}đ</span>
+                        </div>
+                        <div class="cost_old">
+                            <span>25.000 đ</span>
+                        </div>
+                        <div class="product_sale">
+                            <span>-15%</span>
+                        </div>
+                    </div>
+                    <div class="product_delivery">
+                        <div class="delivery_time">
+                            <span>Thời gian giao hàng</span>
+                            <span>Giao hàng đến </span>
+                            <a href="#">Thay đổi</a>
+                        </div>
+                        <div class="delivery_change">
+                            <span>Chính sách đổi trả</span>
+                            <span>Đổi trả trong vòng 30 ngày </span>
+                            <a href="#">Xem thêm</a>
+                        </div>
+                    </div>
+                    <div class="product_quantity">
+                        <div class="quan_title">
+                            <span>Số lượng :</span>
+                        </div>
+                        <div class="add_quantity">
+                            <i class="fa-solid fa-minus"></i>
+                            <span>1</span>
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="product_shopping">
+                <form action="/cart/addcart" method="POST">
+                    <a href="" style="text-decoration: none;">
+                        <div class="product_card ">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <input type="text" value="{{data.name}}" name="name" id="name" hidden>
+                            <input type="text" value="{{data.image}}" name="image" id="image" hidden>
+                            <input type="text" value="{{data.giaBan}}" name="giaBan" id="cost" hidden>
+                            <input type="text" value="1" name="soLuong" id="postSL" hidden>
+                            <button type="submit" id="add_to_cart"
+                                style="border: none; text-decoration: none; background-color: #ffff; all: unset;">
+                                Thêm vào giỏ hàng
+                            </button>
+                            {{!--<span>Thêm vào giỏ hàng</span> --}}
+                        </div>
+                    </a>
+                </form>
+                <div class="product_buy">
+                    <span><a href="/cart/pay" style="all: unset; cursor: pointer;">Mua ngay</a></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="product_option_sale">
+            <div class="product_option_sale_title">
+                <div class="sale_icon">
+                    <img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/event_cart_2/ico_coupon_red.svg?q=102092"
+                        alt="">
+                </div>
+                <div class="sale_tiltle">Ưu đãi liên quan</div>
+            </div>
+            <div class="product_options">
+                <div class="option_list">
+                    <div class="tab_option active_sale">Tất cả</div>
+                    <div class="tab_option">Mã giảm giá </div>
+                    <div class="tab_option">Ưu đãi khác</div>
+                </div>
+                <div class="option_rule">
+                    Có thể áp dụng nhiều mã
+                    <i class="fa-solid fa-exclamation"></i>
+                </div>
+            </div>
+            <div class="tab_options">
+                <div class="option_detail active_sale">
+                    <div class="option_content">
+                        <div class="content_left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="104.554" height="125.395"
+                                viewBox="0 0 104.554 125.395" class="cart2-svg-icon">
+                                <path id="Frame_icon_web"
+                                    d="M95.424,124.4H47.593l-33.592,0a12,12,0,0,1-12-12V12A12,12,0,0,1,14,0H80.785l.255,0H95.424a10.364,10.364,0,0,0,10.129,10.165l-.005,4.374a2.907,2.907,0,1,0,0,5.813v2.324a2.907,2.907,0,1,0,0,5.814v2.324a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.912v2.324a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.911v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.912,2.912,0,0,0,2.915,2.9V55.22a2.907,2.907,0,1,0,0,5.813v2.324a2.907,2.907,0,1,0,0,5.813V71.5a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.912v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.912,2.912,0,0,0,2.915,2.9v2.324a2.907,2.907,0,1,0,0,5.814V95.9a2.907,2.907,0,1,0,0,5.814v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.916,2.916,0,0,0,2.915,2.911l0,3.987A10.328,10.328,0,0,0,95.423,124.2c0,.065,0,.131,0,.2h0Z"
+                                    transform="translate(-1.501 0.499)" fill="#FFB323" stroke="rgba(0,0,0,0)"
+                                    stroke-miterlimit="10" stroke-width="1"></path>
+                            </svg>
+                            <img class="cart_icon"
+                                src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/event_cart_2/ico_promotion.svg?q=102092">
+                        </div>
+                        <div class="detail_content_right">
+                            <div class="right_header">
+                                <div class="header_text">MÃ GIẢM GIÁ 50K - ĐƠN HÀNG TỪ 400K</div>
+                                <div class="header_detail">Chi tiết</div>
+                            </div>
+                            <div class="right_content">
+                                ÁP DỤNG TỪ THỨ 2 ĐẾN THỨ 4 HẰNG TUẦN </div>
+                        </div>
+                    </div>
+                    <div class="option_content">
+                        <div class="content_left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="104.554" height="125.395"
+                                viewBox="0 0 104.554 125.395" class="cart2-svg-icon">
+                                <path id="Frame_icon_web"
+                                    d="M95.424,124.4H47.593l-33.592,0a12,12,0,0,1-12-12V12A12,12,0,0,1,14,0H80.785l.255,0H95.424a10.364,10.364,0,0,0,10.129,10.165l-.005,4.374a2.907,2.907,0,1,0,0,5.813v2.324a2.907,2.907,0,1,0,0,5.814v2.324a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.912v2.324a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.911v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.912,2.912,0,0,0,2.915,2.9V55.22a2.907,2.907,0,1,0,0,5.813v2.324a2.907,2.907,0,1,0,0,5.813V71.5a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.912v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.912,2.912,0,0,0,2.915,2.9v2.324a2.907,2.907,0,1,0,0,5.814V95.9a2.907,2.907,0,1,0,0,5.814v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.916,2.916,0,0,0,2.915,2.911l0,3.987A10.328,10.328,0,0,0,95.423,124.2c0,.065,0,.131,0,.2h0Z"
+                                    transform="translate(-1.501 0.499)" fill="#FFB323" stroke="rgba(0,0,0,0)"
+                                    stroke-miterlimit="10" stroke-width="1"></path>
+                            </svg>
+                            <img class="cart_icon"
+                                src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/event_cart_2/ico_promotion.svg?q=102092">
+                        </div>
+                        <div class="detail_content_right">
+                            <div class="right_header">
+                                <div class="header_text">MÃ GIẢM GIÁ 50K - ĐƠN HÀNG TỪ 400K</div>
+                                <div class="header_detail">Chi tiết</div>
+                            </div>
+                            <div class="right_content">
+                                ÁP DỤNG TỪ THỨ 2 ĐẾN THỨ 4 HẰNG TUẦN </div>
+                        </div>
+                    </div>
+                    <div class="option_content">
+                        <div class="content_left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="104.554" height="125.395"
+                                viewBox="0 0 104.554 125.395" class="cart2-svg-icon">
+                                <path id="Frame_icon_web"
+                                    d="M95.424,124.4H47.593l-33.592,0a12,12,0,0,1-12-12V12A12,12,0,0,1,14,0H80.785l.255,0H95.424a10.364,10.364,0,0,0,10.129,10.165l-.005,4.374a2.907,2.907,0,1,0,0,5.813v2.324a2.907,2.907,0,1,0,0,5.814v2.324a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.912v2.324a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.911v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.912,2.912,0,0,0,2.915,2.9V55.22a2.907,2.907,0,1,0,0,5.813v2.324a2.907,2.907,0,1,0,0,5.813V71.5a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.912v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.912,2.912,0,0,0,2.915,2.9v2.324a2.907,2.907,0,1,0,0,5.814V95.9a2.907,2.907,0,1,0,0,5.814v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.916,2.916,0,0,0,2.915,2.911l0,3.987A10.328,10.328,0,0,0,95.423,124.2c0,.065,0,.131,0,.2h0Z"
+                                    transform="translate(-1.501 0.499)" fill="#6B4EFF" stroke="rgba(0,0,0,0)"
+                                    stroke-miterlimit="10" stroke-width="1"></path>
+                            </svg>
+                            <img class="cart_icon"
+                                src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/event_cart_2/ico_gift.svg?q=102097">
+                        </div>
+                        <div class="detail_content_right">
+                            <div class="right_header">
+                                <div class="header_text">Tặng Bookmark Xinh Xắn Cho Đơn Hàng Từ 0Đ Trở Lên </div>
+                                <div class="header_detail">Chi tiết</div>
+                            </div>
+                            <div class="right_content">
+
+                                PNJ: Tặng Bookmark Kèm Mã Ưu Đãi Cho Khách Hàng Với Hóa Đơn 0Đ Trở Lên </div>
+                        </div>
+                    </div>
+                    <div class="option_more">
+                        <div class="more_icon"> <i class="fa-solid fa-angle-right"></i></div>
+                        <span>Xem thêm</span>
+                    </div>
+                </div>
+                <div class="option_detail ">
+                    <div class="option_content">
+                        <div class="content_left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="104.554" height="125.395"
+                                viewBox="0 0 104.554 125.395" class="cart2-svg-icon">
+                                <path id="Frame_icon_web"
+                                    d="M95.424,124.4H47.593l-33.592,0a12,12,0,0,1-12-12V12A12,12,0,0,1,14,0H80.785l.255,0H95.424a10.364,10.364,0,0,0,10.129,10.165l-.005,4.374a2.907,2.907,0,1,0,0,5.813v2.324a2.907,2.907,0,1,0,0,5.814v2.324a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.912v2.324a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.911v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.912,2.912,0,0,0,2.915,2.9V55.22a2.907,2.907,0,1,0,0,5.813v2.324a2.907,2.907,0,1,0,0,5.813V71.5a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.912v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.912,2.912,0,0,0,2.915,2.9v2.324a2.907,2.907,0,1,0,0,5.814V95.9a2.907,2.907,0,1,0,0,5.814v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.916,2.916,0,0,0,2.915,2.911l0,3.987A10.328,10.328,0,0,0,95.423,124.2c0,.065,0,.131,0,.2h0Z"
+                                    transform="translate(-1.501 0.499)" fill="#FFB323" stroke="rgba(0,0,0,0)"
+                                    stroke-miterlimit="10" stroke-width="1"></path>
+                            </svg>
+                            <img class="cart_icon"
+                                src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/event_cart_2/ico_promotion.svg?q=102092">
+                        </div>
+                        <div class="detail_content_right">
+                            <div class="right_header">
+                                <div class="header_text">MÃ GIẢM GIÁ 50K - ĐƠN HÀNG TỪ 400K</div>
+                                <div class="header_detail">Chi tiết</div>
+                            </div>
+                            <div class="right_content">
+                                ÁP DỤNG TỪ THỨ 2 ĐẾN THỨ 4 HẰNG TUẦN </div>
+                        </div>
+                    </div>
+                    <div class="option_content">
+                        <div class="content_left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="104.554" height="125.395"
+                                viewBox="0 0 104.554 125.395" class="cart2-svg-icon">
+                                <path id="Frame_icon_web"
+                                    d="M95.424,124.4H47.593l-33.592,0a12,12,0,0,1-12-12V12A12,12,0,0,1,14,0H80.785l.255,0H95.424a10.364,10.364,0,0,0,10.129,10.165l-.005,4.374a2.907,2.907,0,1,0,0,5.813v2.324a2.907,2.907,0,1,0,0,5.814v2.324a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.912v2.324a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.911v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.912,2.912,0,0,0,2.915,2.9V55.22a2.907,2.907,0,1,0,0,5.813v2.324a2.907,2.907,0,1,0,0,5.813V71.5a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.912v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.912,2.912,0,0,0,2.915,2.9v2.324a2.907,2.907,0,1,0,0,5.814V95.9a2.907,2.907,0,1,0,0,5.814v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.916,2.916,0,0,0,2.915,2.911l0,3.987A10.328,10.328,0,0,0,95.423,124.2c0,.065,0,.131,0,.2h0Z"
+                                    transform="translate(-1.501 0.499)" fill="#FFB323" stroke="rgba(0,0,0,0)"
+                                    stroke-miterlimit="10" stroke-width="1"></path>
+                            </svg>
+                            <img class="cart_icon"
+                                src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/event_cart_2/ico_promotion.svg?q=102092">
+                        </div>
+                        <div class="detail_content_right">
+                            <div class="right_header">
+                                <div class="header_text">MÃ GIẢM GIÁ 50K - ĐƠN HÀNG TỪ 400K</div>
+                                <div class="header_detail">Chi tiết</div>
+                            </div>
+                            <div class="right_content">
+                                ÁP DỤNG TỪ THỨ 2 ĐẾN THỨ 4 HẰNG TUẦN </div>
+                        </div>
+                    </div>
+                    <div class="option_content">
+                        <div class="content_left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="104.554" height="125.395"
+                                viewBox="0 0 104.554 125.395" class="cart2-svg-icon">
+                                <path id="Frame_icon_web"
+                                    d="M95.424,124.4H47.593l-33.592,0a12,12,0,0,1-12-12V12A12,12,0,0,1,14,0H80.785l.255,0H95.424a10.364,10.364,0,0,0,10.129,10.165l-.005,4.374a2.907,2.907,0,1,0,0,5.813v2.324a2.907,2.907,0,1,0,0,5.814v2.324a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.912v2.324a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.911v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.912,2.912,0,0,0,2.915,2.9V55.22a2.907,2.907,0,1,0,0,5.813v2.324a2.907,2.907,0,1,0,0,5.813V71.5a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.912v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.912,2.912,0,0,0,2.915,2.9v2.324a2.907,2.907,0,1,0,0,5.814V95.9a2.907,2.907,0,1,0,0,5.814v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.916,2.916,0,0,0,2.915,2.911l0,3.987A10.328,10.328,0,0,0,95.423,124.2c0,.065,0,.131,0,.2h0Z"
+                                    transform="translate(-1.501 0.499)" fill="#FFB323" stroke="rgba(0,0,0,0)"
+                                    stroke-miterlimit="10" stroke-width="1"></path>
+                            </svg>
+                            <img class="cart_icon"
+                                src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/event_cart_2/ico_promotion.svg?q=102092">
+                        </div>
+                        <div class="detail_content_right">
+                            <div class="right_header">
+                                <div class="header_text">MÃ GIẢM GIÁ 50K - ĐƠN HÀNG TỪ 400K</div>
+                                <div class="header_detail">Chi tiết</div>
+                            </div>
+                            <div class="right_content">
+                                ÁP DỤNG TỪ THỨ 2 ĐẾN THỨ 4 HẰNG TUẦN </div>
+                        </div>
+                    </div>
+                    <div class="option_more">
+                        <div class="more_icon"> <i class="fa-solid fa-angle-right"></i></div>
+                        <span>Xem thêm</span>
+                    </div>
+                </div>
+                <div class="option_detail ">
+                    <div class="option_content">
+                        <div class="content_left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="104.554" height="125.395"
+                                viewBox="0 0 104.554 125.395" class="cart2-svg-icon">
+                                <path id="Frame_icon_web"
+                                    d="M95.424,124.4H47.593l-33.592,0a12,12,0,0,1-12-12V12A12,12,0,0,1,14,0H80.785l.255,0H95.424a10.364,10.364,0,0,0,10.129,10.165l-.005,4.374a2.907,2.907,0,1,0,0,5.813v2.324a2.907,2.907,0,1,0,0,5.814v2.324a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.912v2.324a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.911v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.912,2.912,0,0,0,2.915,2.9V55.22a2.907,2.907,0,1,0,0,5.813v2.324a2.907,2.907,0,1,0,0,5.813V71.5a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.912v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.912,2.912,0,0,0,2.915,2.9v2.324a2.907,2.907,0,1,0,0,5.814V95.9a2.907,2.907,0,1,0,0,5.814v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.916,2.916,0,0,0,2.915,2.911l0,3.987A10.328,10.328,0,0,0,95.423,124.2c0,.065,0,.131,0,.2h0Z"
+                                    transform="translate(-1.501 0.499)" fill="#6B4EFF" stroke="rgba(0,0,0,0)"
+                                    stroke-miterlimit="10" stroke-width="1"></path>
+                            </svg>
+                            <img class="cart_icon"
+                                src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/event_cart_2/ico_gift.svg?q=102097">
+                        </div>
+                        <div class="detail_content_right">
+                            <div class="right_header">
+                                <div class="header_text">Tặng Bookmark Xinh Xắn Cho Đơn Hàng Từ 0Đ Trở Lên </div>
+                                <div class="header_detail">Chi tiết</div>
+                            </div>
+                            <div class="right_content">
+
+                                PNJ: Tặng Bookmark Kèm Mã Ưu Đãi Cho Khách Hàng Với Hóa Đơn 0Đ Trở Lên </div>
+                        </div>
+                    </div>
+                    <div class="option_content">
+                        <div class="content_left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="104.554" height="125.395"
+                                viewBox="0 0 104.554 125.395" class="cart2-svg-icon">
+                                <path id="Frame_icon_web"
+                                    d="M95.424,124.4H47.593l-33.592,0a12,12,0,0,1-12-12V12A12,12,0,0,1,14,0H80.785l.255,0H95.424a10.364,10.364,0,0,0,10.129,10.165l-.005,4.374a2.907,2.907,0,1,0,0,5.813v2.324a2.907,2.907,0,1,0,0,5.814v2.324a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.912v2.324a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.911v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.912,2.912,0,0,0,2.915,2.9V55.22a2.907,2.907,0,1,0,0,5.813v2.324a2.907,2.907,0,1,0,0,5.813V71.5a2.907,2.907,0,0,0-2.06.852,2.874,2.874,0,0,0-.855,2.05,2.917,2.917,0,0,0,2.915,2.912v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.912,2.912,0,0,0,2.915,2.9v2.324a2.907,2.907,0,1,0,0,5.814V95.9a2.907,2.907,0,1,0,0,5.814v2.324a2.906,2.906,0,0,0-2.06.852,2.876,2.876,0,0,0-.855,2.051,2.916,2.916,0,0,0,2.915,2.911l0,3.987A10.328,10.328,0,0,0,95.423,124.2c0,.065,0,.131,0,.2h0Z"
+                                    transform="translate(-1.501 0.499)" fill="#6B4EFF" stroke="rgba(0,0,0,0)"
+                                    stroke-miterlimit="10" stroke-width="1"></path>
+                            </svg>
+                            <img class="cart_icon"
+                                src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/event_cart_2/ico_gift.svg?q=102097">
+                        </div>
+                        <div class="detail_content_right">
+                            <div class="right_header">
+                                <div class="header_text">Tặng Bookmark Xinh Xắn Cho Đơn Hàng Từ 0Đ Trở Lên </div>
+                                <div class="header_detail">Chi tiết</div>
+                            </div>
+                            <div class="right_content">
+
+                                PNJ: Tặng Bookmark Kèm Mã Ưu Đãi Cho Khách Hàng Với Hóa Đơn 0Đ Trở Lên </div>
+                        </div>
+                    </div>
+
+                    <div class="option_more">
+                        <div class="more_icon"> <i class="fa-solid fa-angle-right"></i></div>
+                        <span>Xem thêm</span>
+                    </div>
+
+                </div>
+                <div class="flashsale-body product_related">
+                    <div class="product_option_sale_title">
+                        <div class="sale_tiltle">Các sản phẩm liên quan</div>
+
+                    </div>
+                    <div class="list-item">
+                        {{#each productsRelated}}
+                        <div class="item">
+                            <a class="name-item-link" href="/book/docongnghe/{{this.slug}}">
+                                <img class="img-item" src="{{this.image}}" alt="">
+                                <h5 class="name-item">{{this.name}} <br></h5>
+                                <h4 class="cost-item">{{this.giaBan}}đ</h4>
+                                <h5 class="cost-base">75.0000</h5>
+
+                            </a>
+                        </div>
+                        {{/each}}
+
+                    </div>
+                    <!--//xem them-->
+                    <div class="xem-them">
+                        Xem Thêm
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+    integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    var giaban = document.querySelector('.cost_current span');
+    giaban.innerHTML = (new Intl.NumberFormat('vi', { style: 'currency', currency: 'VND' }).format(parseFloat(giaban.innerHTML)));
+
+    var add_to_cartDOM = document.querySelector('#add_to_cart')
+    var nameInput = document.querySelector('#name').value
+    var imageInput = document.querySelector('#image').value
+    var costInput = document.querySelector('#cost').value
+
+    var soluongmuaInput = document.querySelector('#postSL').value
+    add_to_cartDOM.addEventListener('click', async (e) => {
+
+        e.preventDefault()// Ngăn chặn hành vi mặc định của sự kiện submit
+        //console.log(1)
+        try {
+            const res = await axios.get('http://localhost:3000/user/islogin');
+            const islogin = res.data.isLogin;
+
+            if (!islogin || islogin === false) {
+                alert("Bạn hãy đăng nhập trước khi thêm vào giỏ hàng!");
+            } else {
+                // Xử lý logic khi đăng nhập thành công
+                let result = await axios.post('http://localhost:3000/cart/addcart', { name: nameInput, image: imageInput, giaBan: costInput, soLuong: soluongmuaInput })
+                if (result.data.status == false)
+                    return alert(result.data.msg)
+                else {
+                    window.location.href = 'http://localhost:3000/cart';
+                }
+
+
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,7 @@
+<form method="POST" action="/category/update/{{category._id}}?_method=PUT">
+    <div class="mb-3">
+        <label for="name" class="form-label">Tên Category:</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" value="{{category.name}}" name="name">
+    </div>
+    <button type="submit">Lưu lại</button>
+</form>

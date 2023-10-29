@@ -1,0 +1,68 @@
+<div class="mt-4" style="width: 600px;">
+    <h3 style="margin-left: 40px;">Cập nhật thông tin sản phẩm</h3>
+    <form method="POST" action="/book/{{books._id}}?_method=PUT">
+
+        <div class="chia-cot">
+            <div class="cot1">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Tên sản phẩm:</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" value="{{books.name}}"
+                        name="name">
+                </div>
+                <div class="mb-3">
+                    <label for="nhacungcap" class="form-label">Nhà cung cấp:</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" value="{{books.nhacungcap}}"
+                        name="nhacungcap">
+                </div>
+                <div class="mb-3">
+                    <label for="nhaXB" class="form-label">Nhà xuất bản:</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" value="{{books.nhaXB}}"
+                        name="nhaXB">
+                </div>
+                <div class="mb-3">
+                    <label for="tacgia" class="form-label">Tác giả:</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" value="{{books.tacgia}}"
+                        name="tacgia">
+                </div>
+                <div class="mb-3">
+                    <label for="loaibia" class="form-label">Loại bìa:</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" value="{{books.loaibia}}"
+                        name="loaibia">
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">link ảnh:</label>
+                    {{!-- <img width="200px" src="../img/{{books.image}}" alt=""> --}}
+                    <img width="200px" src="{{books.image}}" alt="">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" value="{{books.image}}"
+                        name="image">
+                </div>
+            </div>
+            <div class="cot2">
+                <div class="mb-3">
+                    <label for="giaban" class="form-label">Giá bán:</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" value="{{books.giaban}}"
+                        name="giaban">
+                </div>
+                <div class="mb-3">
+                    <label for="soluongton" class="form-label">Số lượng tồn:</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" value="{{books.soluongton}}"
+                        name="soluongton">
+                </div>
+                <div class="mb-3">
+                    <label for="bo" class="form-label">Bộ:</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" value="{{books.bo}}"
+                        name="bo">
+                </div>
+                <div class="mb-3">
+                    <label for="slug" class="form-label">slug:</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" value="{{books.slug}}"
+                        name="slug">
+                </div>
+            </div>
+
+
+        </div>
+        <button type="submit" class="mb-3 btn btn-primary">Lưu lại</button>
+    </form>
+
+</div>

@@ -1,0 +1,378 @@
+/* .grid.wide {
+    margin-top: 30px;
+} */
+
+.product-path {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    margin: 10px 0;
+    line-height: 16px;
+    color: #262626;
+}
+
+.product-path span i {
+    font-size: 12px;
+    margin: 0 3px;
+    color: #999;
+}
+
+.product_detail {
+    background-color: #fff;
+    padding-bottom: 30px;
+}
+
+.product {
+
+    display: flex;
+    border-radius: 10px;
+    padding: 25px 0;
+}
+
+.product_img {
+    background-image: url(https://cdn0.fahasa.com/media/catalog/product/i/m/image_195509_1_17519.jpg);
+    padding-top: 30%;
+    flex: 0.7;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.product_intro {
+    margin-top: 20px;
+}
+
+.product_title h2 {
+    font-weight: 400;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+}
+
+.product_detail_infor {
+    
+}
+
+.product_infor_2,
+.product_infor_1 {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.product_infor_2 div,
+.product_infor_1 div {
+    margin-right: 50px;
+}
+
+.product_rating {
+    color: #cfcfcf;
+
+}
+
+.product_rating i {
+    font-size: 12px;
+
+}
+
+.product_cost {
+    display: flex;
+    margin: 20px 0;
+    align-items: center;
+}
+
+.product_cost div {
+    margin-right: 20px;
+}
+
+.cost_current {
+    color: #C92127;
+    font-weight: 800;
+    font-size: 40px;
+}
+
+.cost_old {
+    text-decoration: line-through;
+}
+
+.product_sale {
+    background: #C92127;
+    color: #fff;
+    border-radius: 3px;
+    padding: 2px;
+    font-size: 15px;
+    padding: 3px;
+}
+
+.product_delivery {
+    margin-top: 15px;
+}
+
+.delivery_time {
+    margin-bottom: 10px;
+}
+
+.delivery_time span,
+.delivery_change span {
+    width: 198px;
+    display: inline-block;
+}
+
+.delivery_time a,
+.delivery_change a {
+    text-decoration: none;
+    color: #2489F4;
+    font-size: 600;
+}
+
+.product_quantity {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: #4e4d4d;
+}
+
+.quan_title span {
+    font-weight: 600;
+    margin-right: 60px;
+}
+
+.add_quantity {
+    border-radius: 3px;
+    border: 1px solid #b9b8b8;
+    padding: 3px 10px;
+}
+
+.add_quantity span {
+    margin: 0 15px;
+}
+
+.add_quantity i {
+    cursor: pointer;
+}
+
+.product_shopping {
+    margin-top: 20px;
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.product_card {
+    border: 3px solid #C92127;
+    border-radius: 10px;
+    padding: 10px;
+    color: #C92127;
+    margin-right: 30px;
+    width: 236px;
+    text-align: center;
+}
+
+.product_buy {
+    width: 236px;
+    border-radius: 10px;
+    padding: 13px;
+    background-color: #C92127;
+    margin-right: 30px;
+    color: #fff;
+    text-align: center;
+}
+
+
+.product_option_sale {
+    margin-top: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding-bottom: 30px;
+}
+
+.product_option_sale_title {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.produc_option_sale_title div {
+    margin-right: 10px;
+}
+
+.product_options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.option_list {
+    display: flex;
+}
+
+.option_list div {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.option_list div:hover {
+    color: #C92127;
+    font-weight: bold;
+    -webkit-transition: none;
+    transition: none;
+}
+
+.tab_option.active_sale {
+    border-bottom: 2px solid #C92127;
+}
+
+.option_rule {
+    opacity: 0.6;
+}
+
+.content_left {
+    width: 82px;
+    height: 84px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    padding: 8px;
+    position: relative;
+    text-align: center;
+
+}
+
+.sale_icon {
+    margin-right: 5px;
+}
+
+.cart_icon {
+    position: absolute;
+    display: flex;
+    height: 30px;
+    width: 30px;
+}
+
+.option_detail.active_sale {
+
+    display: flex;
+    align-items: center;
+}
+
+.option_detail {
+    display: none;
+}
+
+.option_content {
+    display: flex;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    width: 350px;
+    margin: 30px 2.5px 30px 10px;
+    position: relative;
+}
+
+.option_content::after {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    position: absolute;
+    top: -8px;
+    left: 82px;
+    border-radius: 50%;
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+}
+
+.option_content::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    position: absolute;
+    top: 81px;
+    left: 82px;
+    border-radius: 50%;
+    box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.15);
+}
+
+
+.header_text {
+    color: #0D0E0F;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+    overflow: hidden;
+    line-height: 1.4;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    height: calc(15px * 1 * 1.4);
+    display: -webkit-box;
+    max-width: 200px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header_detail {
+    color: #2F80ED;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.right_header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.detail_content_right {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.right_content {
+    display: -webkit-box;
+    height: calc(12px * 2 * 1.4);
+    flex: 1;
+    font-size: 12px;
+    overflow: hidden;
+    line-height: 1.4;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    color: #7A7E7F;
+
+}
+
+.content_left svg {
+    width: 66px;
+}
+
+.option_more {
+
+    margin-left: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.more_icon {
+    width: 30px;
+    height: 30px;
+    background-color: #C92127;
+    color: #fff;
+    line-height: 30px;
+    border-radius: 50%;
+    margin-left: 15px;
+}
+
+.option_more span {
+    margin-top: 5px;
+    color: #C92127;
+    font-weight: bold;
+}

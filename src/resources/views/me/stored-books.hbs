@@ -1,0 +1,99 @@
+<h1>Danh sách các loại đồ dùng</h1>
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th scope="col">TT</th>
+            <th scope="col">Tên sách</th>
+            <th scope="col">Tác giả</th>
+            <th scope="col">Hình ảnh</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each books}}
+        <tr>
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.name}}</td>
+            <td>{{this.tacgia}}</td>
+            <td style="width: 200px; height: 200px;"><img width="100%" src="{{this.image}}" alt=""></td>
+            <td>
+                <a href="/book/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+                <a href="/book/{{this._id}}/edit" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}"
+                    data-target="#delete_book">Xóa</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<table class="table mt-4">
+    <h2>Đồ dùng văn phòng</h2>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">Nhà sản xuất</th>
+            <th scope="col">Hình ảnh</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each fashions}}
+        <tr>
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.name}}</td>
+            <td>{{this.nhaCungCap}}</td>
+            <td style="width: 200px; height: 200px;"><img width="100%" src="{{this.image}}" alt=""></td>
+
+            <td>
+                <a href="/book/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+                <a href="/book/{{this._id}}/edit" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}"
+                    data-target="#delete_book">Xóa</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<!-- confirnm delete book-->
+
+<!-- Modal -->
+<div class="modal fade" id="delete_book" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xóa sách này?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc chắn muốn xóa sách này?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                <button id="btn-delete-book" type="button" class="btn btn-primary">Xóa bỏ</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--delete form hidden-->
+<form name="delete-book-form" method="POST"></form>
+<script>
+    var bookId;
+    var deleteForm = document.forms['delete-book-form'];
+    document.addEventListener('DOMContentLoaded', function () {
+        $('#delete_book').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            bookId = button.data('id');
+
+        })
+
+    })
+
+    var btnDeleteBook = document.getElementById('btn-delete-book');
+    btnDeleteBook.onclick = function () {
+        deleteForm.action = "/book/" + bookId + "?_method=DELETE";
+        deleteForm.submit();
+    }
+
+
+</script>

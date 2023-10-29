@@ -1,0 +1,18 @@
+<div class="mt-4" style="width: 600px;">
+    <h3 style="margin-left: 40px;">Cập nhật thông tin sách</h3>
+    <form method="POST" action="/book/{{books._id}}?_method=PUT">
+
+        <div class="chia-cot">
+            <div class="cot1">
+                <div class="mb-3">
+                    <label for="name" class="form-label">name:</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" value="{{books.name}}"
+                        name="name">
+                </div>
+
+            </div>
+        </div>
+        <button type="submit" class="mb-3 btn btn-primary">Lưu lại</button>
+    </form>
+
+</div>
