@@ -2,7 +2,7 @@
 const Book = require('../models/Book')
 const Fashion = require('../models/Fashion')
 const Category = require('../models/CategoryModel')
-
+const fs = require('fs')
 const {mongooseToObject,mutipleMongooseToObject} = require('../../util/mongoose')
 
 const BookController ={
@@ -19,9 +19,32 @@ const BookController ={
   },
   //[PUT] book/id
   updateBook: async(req, res, next)=>{
-    try {
-      await Book.updateOne({_id: req.params.id}, req.body)
-      return res.redirect('/me/stored/books')
+    try {    
+    if(!req.file)
+    {
+      const {name,nhacungcap,nhaXB,tacgia,loaibia,image,giaban,soluongton,bo,slug,categoriesID} = req.body
+      await Book.updateOne({_id: req.params.id},{name,nhacungcap,nhaXB,tacgia,loaibia,image,giaban,soluongton,bo,slug,categoriesID})
+      return res.redirect('/dashboard/products')
+    }
+      else
+      {
+       const imageUpdate = req.file.originalname
+        const {name,nhacungcap,nhaXB,tacgia,loaibia,image,giaban,soluongton,bo,slug,categoriesID} = req.body
+         if(imageUpdate != image) {
+           const pathtofile = `src\\public\\img\\${image}`
+          fs.unlink(pathtofile,(err)=>{
+            if(err) throw err;
+            console.log('deleted file!')
+          })
+        }
+        
+        await Book.updateOne({_id: req.params.id},{name,nhacungcap,nhaXB,tacgia,loaibia,image: imageUpdate,giaban,soluongton,bo,slug,categoriesID})
+        return res.redirect('/dashboard/products')
+      // //console.log(image== imageUpdate)
+      // res.json({isckech: image != imageUpdate})
+      }
+
+      
     
     } catch (error) {
        return res.status(500).json({msg: error})

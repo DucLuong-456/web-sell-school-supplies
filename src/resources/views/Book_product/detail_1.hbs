@@ -20,7 +20,7 @@
         </div>
         <div class=" product_detail">
             <div class="product">
-                <div class="product_img" style="background-image: url({{books.image}});">
+                <div class="product_img" style="background-image: url(/img/{{books.image}});">
                 </div>
                 <div class="product_intro">
                     <div class="product_title">
@@ -339,7 +339,7 @@
                 {{#each productsRelated}}
                 <div class="item">
                     <a class="name-item-link" href="/book/dodunghoctap/{{this.slug}}">
-                        <img class="img-item" src="{{this.image}}" alt="">
+                        <img class="img-item" src="/img/{{this.image}}" alt="">
                         <h5 class="name-item">{{this.name}} <br></h5>
                         <h4 class="cost-item">{{this.giaban}}đ</h4>
                         <h5 class="cost-base">75.0000</h5>

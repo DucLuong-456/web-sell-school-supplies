@@ -1,6 +1,23 @@
+<style>
+    .mb-3 {
+        width: 1000px;
+    }
+
+    label {
+        display: inline-block;
+        min-width: 300px;
+        margin-top: 10px;
+    }
+
+    .btn_submit {
+        width: 200px;
+        text-align: center;
+    }
+</style>
+
 <div class="mt-4" style="width: 600px;">
     <h3 style="margin-left: 40px;">Cập nhật thông tin sản phẩm</h3>
-    <form method="POST" action="/book/{{books._id}}?_method=PUT">
+    <form method="POST" action="/book/{{books._id}}?_method=PUT" enctype="multipart/form-data">
 
         <div class="chia-cot">
             <div class="cot1">
@@ -31,10 +48,13 @@
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">link ảnh:</label>
-                    {{!-- <img width="200px" src="../img/{{books.image}}" alt=""> --}}
-                    <img width="200px" src="{{books.image}}" alt="">
+                    <img src="/img/{{books.image}}" width="200px" alt="" id="output">
+
+                    <input type="file" class="form-control" id="exampleFormControlInput1" name="imageUp"
+                        onchange="loadfile(event)" value="{{books.image}}">
                     <input type="text" class="form-control" id="exampleFormControlInput1" value="{{books.image}}"
-                        name="image">
+                        name="image" hidden>
+
                 </div>
             </div>
             <div class="cot2">
@@ -62,7 +82,13 @@
 
 
         </div>
-        <button type="submit" class="mb-3 btn btn-primary">Lưu lại</button>
+        <button type="submit" class="mb-3 btn btn-primary btn_submit">Lưu lại</button>
     </form>
 
 </div>
+<script>
+    function loadfile(event) {
+        var image = document.getElementById('output')
+        image.src = URL.createObjectURL(event.target.files[0])
+    }
+</script>
