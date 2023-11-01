@@ -1,26 +1,18 @@
-const users = require('../models/userModel');
-const Book = require('../models/Book')
-const Fashion = require('../models/Fashion')
+const User = require('../models/userModel');
 const Cart = require('../models/cartModel')
-const Bill = require('../models/billModel')
-const oder = require('../models/billModel')
+
 
 const {mutipleMongooseToObject,mongooseToObject} = require('../../util/mongoose')
 
 
 const CartController ={
     getGioHang: async(req,res)=>{
-        //const carts = await Cart.find({});
-        //res.json(carts)
         const products = await Cart.find({userId: req.user.id});
         res.render('giohang',{products: mutipleMongooseToObject(products)});
-        
-        // const carts= Users.cart;
-        // res.render('giohang',{carts: mongooseToObject(carts)})
     },
     addItemGioHang: async(req,res)=>{
         try{
-            const user = await users.findById(req.user.id)
+            const user = await User.findById(req.user.id)
             if(!user) return res.status(400).json({msg: "User does not exist."})
             const userId = req.user.id
             const {name, image,giaBan,soLuong}= req.body;
@@ -48,11 +40,6 @@ const CartController ={
         const carts = await Cart.find({});
         const SoLuongSP={SoLuongSP: await Cart.find({}).count()};
         res.render('menu/thanhToan',{carts: mutipleMongooseToObject(carts),SoLuongSP});
-    }
-    ,
-    payment: async(req,res)=>{
-        const infor_payment = new oder(req.body);
-        infor_payment.save();
     }
 }
 

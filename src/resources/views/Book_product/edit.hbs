@@ -78,6 +78,15 @@
                     <input type="text" class="form-control" id="exampleFormControlInput1" value="{{books.slug}}"
                         name="slug">
                 </div>
+                <div class="mb-3">
+                    <label for="categoriesID" class="form-label">Category:</label>
+                    <span id="categoryIDCopy" hidden>{{books.categoryID}}</span>
+                   <select name="categoryID" id="categoryID">
+                    {{#each categories}}
+                        <option value="{{this._id}}">{{this.name}}</option>
+                    {{/each}}
+                    </select>
+                </div>
             </div>
 
 
@@ -91,4 +100,6 @@
         var image = document.getElementById('output')
         image.src = URL.createObjectURL(event.target.files[0])
     }
+    var categoryValue= document.getElementById('categoryIDCopy').innerHTML
+    document.getElementById('categoryID').value = categoryValue
 </script>

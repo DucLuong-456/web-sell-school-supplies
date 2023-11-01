@@ -1,8 +1,9 @@
+const { type } = require('express/lib/response');
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const Book = new Schema({
+const Product = new Schema({
   name: { type: String, maxLength: 255},
   nhacungcap: { type: String, maxLength: 255},
   nhaXB: { type: String, maxLength: 255},
@@ -13,8 +14,10 @@ const Book = new Schema({
   soluongton:{type: String, maxLength: 255},
   bo:{type: String, maxLength: 255},
   slug: {type: String, maxLength: 255 },//slug:'name', unique: true
-  createAt: { type: Date, default: Date.now},
-  updateAt: { type: Date, default: Date.now},
-  categoryID: {type: String}
+  categoryID: {type: String},
+  xuatxu: {type: String},
+  thuonghieu: {type: String}
+},{
+  timestamps: true
 });
-module.exports = mongoose.model('books', Book);
+module.exports = mongoose.model('products', Product);

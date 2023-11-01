@@ -1,9 +1,10 @@
-const Book = require('../models/Book')
-const Fashion = require('../models/Fashion')
-const Cart = require('../models/cartModel')
+
 const Users = require('../models/userModel')
 const Category = require('../models/CategoryModel')
-const Order = require('../models/order')
+const Order = require('../models/OrderModel')
+const Cart = require('../models/cartModel')
+const Product = require('../models/ProductModel')
+
 const {mutipleMongooseToObject} = require('../../util/mongoose')
 const dashboardController=  {
     deleteBill: async(req, res, next)=> {            
@@ -16,11 +17,9 @@ const dashboardController=  {
             },
     // [Get => /news]
     manageProducts: async(req, res, next)=> {       
-        const books= await Book.find({}); 
-        const fashions= await Fashion.find({}); 
+        const products= await Product.find({}); 
         res.render('dashboard/manage_product',{layout: false,
-            books: mutipleMongooseToObject(books)
-        , fashions:mutipleMongooseToObject(fashions)});
+            products: mutipleMongooseToObject(products)});
         
         },
     manageUsers: async(req, res, next)=> {       
@@ -36,7 +35,7 @@ const dashboardController=  {
                     carts: mutipleMongooseToObject(carts)
              });
            },
-           manageOrder: async(req, res, next)=> {       
+    manageOrder: async(req, res, next)=> {       
             const orders= await Order.find({}); 
            
             res.render('dashboard/manage_order',{layout: false,

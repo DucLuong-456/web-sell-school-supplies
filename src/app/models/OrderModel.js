@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const oder = new Schema({
+const order = new Schema({
     madonhang:{type: String, maxLength: 255},
     ngaydat:{type: Date},
     address:{type: String},
@@ -11,4 +11,4 @@ const oder = new Schema({
 },{
         timestamps: true
       });
-module.exports = mongoose.model('oders', oder);
+module.exports = mongoose.model('orders', order);
