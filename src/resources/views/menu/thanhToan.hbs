@@ -31,7 +31,7 @@
                         </div>
                     </div>
 
-                    <form action="/cart/payment" method="POST">
+                    <form action="/payment/create" method="POST">
                         <div class="form-group">
                             <input type="text" name="email" placeholder="Email" class="form-control">
                         </div>
@@ -91,12 +91,12 @@
         </div>
         <div class="oder_product">
             <div class="oder_prodcut_title">
-                <h3>Đơn hàng ({{SoLuongSP.SoLuongSP}} Sản phẩm )</h3>
+                <h3>Đơn hàng ({{soluong}} Sản phẩm )</h3>
             </div>
             {{#each carts}}
             <div class="product_pay">
                 <div class="product_pay-img">
-                    <img src="{{this.image}}" alt="" width="50px" height="50px">
+                    <img src="/img/{{this.image}}" alt="" width="50px" height="50px">
                 </div>
                 <div class="product_pay_detail">
                     <div class="product_pay_title">

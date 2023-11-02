@@ -1,0 +1,82 @@
+<style>
+    .info_order {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .info_order h4 {
+        margin: 5px 0;
+    }
+
+    .cot1, .cot2 {
+        flex-basis: 50%;
+    }
+
+    .cot1 {
+        padding-right: 20px;
+    }
+
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    img {
+        max-width: 50px;
+        max-height: 50px;
+    }
+</style>
+<div>
+    <h3>Mã đơn hàng: {{order._id}}</h3>
+    <div class="info_order">
+        <div style="cot1">
+            <h4>Tên: {{order.name}}</h4>
+            <h4>SĐT: {{order.phone_number}}</h4>
+            <h4>Email: {{order.email}}</h4>
+        </div>
+        <div class="cot2">
+            <h4>Address: {{order.address}}</h4>
+            <h4>Ngày giao:{{order.createAt}}</h4>
+        </div>
+    </div>
+    <br>
+    <br>
+    <table>
+        <thead>
+            <th>#</th>
+            <th>Sản Phẩm</th>
+            <th>hình ảnh</th>
+            <th>giá </th>
+            <th>Số lượng </th>
+            <th>Tổng tiền </th>
+        </thead>
+        <tbody>
+            {{#each carts}}
+            <tr>
+                <td>{{sum @index 1}}</td>
+                <td>{{this.name}}</td>
+                <td><img src="/img/{{this.image}}" alt="ảnh"></td>
+                <td>{{this.giaBan}}</td>
+                <td>{{this.soLuong}}</td>
+                <td>{{this.giaBan}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+<h4>Hình thức vận chuyển: flash ship</h4>
+<h4>Phí vận chuyển: 20.000 đ</h4>
+<h4>Giá trị đơn hàng: <span id="total_money"></span></h4> <h4>Tổng giá trị đơn hàng: <span id="total_order_money"></span></h4>
+<button>Xác nhận đơn</button>
+</div>

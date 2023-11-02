@@ -67,34 +67,29 @@
                 {{!-- Quản lý người dùng --}}
                 <section class="main">
                     <div>
-                        <h1>Quản lý người dùng</h1>
+                        <h1>Quản lý đơn hàng</h1>
 
                     </div>
                     <table class="table mt-4">
                         <thead>
                             <tr>
                                 <th scope="col" style="width: 10%;">TT</th>
-                                <th scope="col" style="width: 33%;">Mã đơn hàng</th>
+                                <th scope="col" style="width: 20%;">Tên khách hàng</th>
+                                <th scope="col" style="width: 15%;">Email</th>
                                 <th scope="col" style="width: 20%;">Ngày đặt</th>
-                                <th scope="col" style="width: 20%;">khách hàng</th>
-                                <th scope="col" style="width: 12%;">Chi tiết đơn</th>
+                                <th scope="col" style="width: 20%;">Total money</th>
+                                <th scope="col" style="width: 12%;text-align: center;">Chi tiết đơn</th>
                             </tr>
                         </thead>
                         <tbody>
                             {{#each orders}}
                             <tr>
                                 <th scope="row">{{sum @index 1}}</th>
-                                <td>{{this._id}}</td>
-                                <td>{{this.ngaydat}}</td>
-                                <td>{{this.ngaydat}}</td>
-
-
-                                <td>
-                                    <a href="/user/{{this._id}}/edit" class="btn"
-                                        style="width: 100px; margin-bottom: 5px;">Sửa</a>
-                                    <a href="/user/{{this._id}}/edit" class="btn" style="width: 100px;"
-                                        data-toggle="modal" data-id="{{this._id}}" data-target="#delete_book">Xóa</a>
-                                </td>
+                                <td>{{this.name}}</td>
+                                <td>{{this.email}}</td>
+                                <td class="order_date">{{this.createdAt}}</td>
+                                <td>{{this.total_money}}</td>
+                                <td style="text-align: center;"><a href="/payment/detailorder/{{this._id}}">Xem</a></td>
                             </tr>
                             {{/each}}
                         </tbody>
@@ -169,3 +164,11 @@
 
     </html>
 </span>
+<script>
+    var order_dateDOM = document.querySelectorAll('.order_date')
+    order_dateDOM.forEach((item)=>{
+    var date = new Date(item.innerHTML)
+    item.innerHTML = date.getDate() +  "/" + date.getMonth() + "/" + date.getFullYear() +' | '+ date.getHours() + ":" + date.getMinutes()
+
+    })
+</script>

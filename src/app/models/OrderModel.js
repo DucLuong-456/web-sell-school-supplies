@@ -9,12 +9,20 @@ const order = new Schema({
     phone_number:{type: Date},
     address:{type: String},
     note: {type: String},
-    order_date: {type: Date},
-    total_money:{type: String},
-    status:{type: String,
-    default: "Đang giao"
+    order_date: {
+      type: Date
     },
-    hinhthuc: {type: String}
+    total_money:{type: String},
+    cart: {
+      type: []
+    },
+    status:{
+        type: String,
+        default: "Đang giao"
+    },
+    hinhthuc: {
+      type: String, 
+      default: "COD"}
 },{
         timestamps: true
       });

@@ -37,7 +37,6 @@ const dashboardController=  {
            },
     manageOrder: async(req, res, next)=> {       
             const orders= await Order.find({}); 
-           
             res.render('dashboard/manage_order',{layout: false,
                 orders: mutipleMongooseToObject(orders)
          });
