@@ -34,16 +34,19 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    width: 35%;
 }
 
 .product_intro {
     margin-top: 20px;
+    width: 60%;
 }
 
 .product_title h2 {
     font-weight: 400;
     margin-bottom: 20px;
     word-wrap: break-word;
+    text-overflow: ellipsis;
 }
 
 .product_detail_infor {

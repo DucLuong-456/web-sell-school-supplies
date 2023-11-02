@@ -27,18 +27,23 @@ const ProductController ={
     }
       else
       {
-       const imageUpdate = req.file.originalname
-        const {name,nhacungcap,nhaXB,tacgia,loaibia,image,giaban,soluongton,bo,slug,categoryID} = req.body
-         if(imageUpdate != image) {
-           const pathtofile = `src\\public\\img\\${image}`
-          fs.unlink(pathtofile,(err)=>{
-            if(err) throw err;
-            console.log('deleted file!')
-          })
-        }
+      //  const imageUpdate = req.file.originalname
+      //   const {name,nhacungcap,nhaXB,tacgia,loaibia,image,giaban,soluongton,bo,slug,categoryID} = req.body
+      //    if(imageUpdate != image) {
+      //      const pathtofile = `src\\public\\img\\${image}`
+      //     fs.unlink(pathtofile,(err)=>{
+      //       if(err) throw err;
+      //       console.log('deleted file!')
+      //     })
+      //   }
         
-        await Product.updateOne({_id: req.params.id},{name,nhacungcap,nhaXB,tacgia,loaibia,image: imageUpdate,giaban,soluongton,bo,slug,categoryID})
-        return res.redirect('/dashboard/products')
+      //   await Product.updateOne({_id: req.params.id},{name,nhacungcap,nhaXB,tacgia,loaibia,image: imageUpdate,giaban,soluongton,bo,slug,categoryID})
+      //   return res.redirect('/dashboard/products')
+      const {name,nhacungcap,nhaXB,tacgia,loaibia,giaban,soluongton,bo,slug,categoryID} = req.body
+      const imageUpdate = req.file.originalname
+      
+      await Product.updateOne({_id: req.params.id},{name,nhacungcap,nhaXB,tacgia,loaibia,image: imageUpdate,giaban,soluongton,bo,slug,categoryID})
+       return res.redirect('/dashboard/products')
       }
 
       

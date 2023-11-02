@@ -124,8 +124,17 @@
             if (result.data.status == 'fail')
                 return alert("Đăng nhập không thành công!")
             else {
-                alert("Đăng nhập thành công!")
-                window.location.href = '/dashboard/products';
+                if(result.data.role == 1)
+                {
+                    alert("Đăng nhập thành công!")
+                    window.location.href = '/';
+                }
+                else
+                {
+                    alert("Đăng nhập thành công!")
+                    window.location.href = '/dashboard/products';
+                }
+                
             }
         }
         catch (err) {

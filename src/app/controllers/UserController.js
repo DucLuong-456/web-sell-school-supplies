@@ -89,7 +89,7 @@ const UserController = {
             //variable check login
             res.cookie('isLogin', true)
             
-            return res.json({msg: "login sucessed!",status: "sucesss"})
+            return res.json({msg: "login sucessed!",status: "sucesss",role: user.role})
         }
         catch(err){
             return res.json({msg: "loi server"})

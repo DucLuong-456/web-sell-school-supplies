@@ -25,11 +25,11 @@
         <div class="cart-item">
             <div class="cart-product">
                 <div class="cart-img">
-                    <img src="{{this.image}}" alt="">
+                    <img src="/img/{{this.image}}" alt="">
                 </div>
                 <div class="cart-infor">
                     <div class="cart-name">
-                        <a href="#" class="name">{{this.name}}</a>
+                        <a href="/book/dodunghoctap/{{this.slug}}" class="name">{{this.name}}</a>
                         <br>
                         <form action="/cart/deletecart?_method=DELETE" method="POST">
                             <input type="text" value="{{this._id}}" name="id" hidden>
