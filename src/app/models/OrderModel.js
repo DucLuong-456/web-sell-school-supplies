@@ -6,7 +6,7 @@ const order = new Schema({
     userID: {type: String},
     name: {type: String},
     email: {type: String},
-    phone_number:{type: Date},
+    phone_number:{type: String},
     address:{type: String},
     note: {type: String},
     order_date: {

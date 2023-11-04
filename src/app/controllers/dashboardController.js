@@ -13,7 +13,7 @@ const dashboardController=  {
         },
     deleteUser: async(req, res, next)=> {            
             await Users.deleteOne({_id: req.params.id});
-            res.redirect('/me/stored/users');
+            res.redirect('/dashboard/users');
             },
     // [Get => /news]
     manageProducts: async(req, res, next)=> {       

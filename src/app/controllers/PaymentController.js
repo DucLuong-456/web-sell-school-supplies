@@ -18,14 +18,7 @@ const PaymentController ={
     getPayment: async (req,res)=>{
         const userId = req.user.id
         const orders = await Order.find({userID: userId})
-        return res.json(orders)
-
-        // const cart = await Cart.find({userId: req.user.id})
-        // let total_money=0;
-        // cart.forEach((item)=>{
-        //     total_money +=parseFloat(item.giaBan) * parseInt(item.soLuong);
-        // })
-        // return res.json({cart,total_money})
+        return res.render('payment/my_list_order',{orders: mutipleMongooseToObject(orders)})
     },
     createPayment: async (req,res)=>{
         const userId = req.user.id
@@ -41,17 +34,22 @@ const PaymentController ={
             userID: userId,name, address, email,phone_number,total_money,cart
         })
         await order.save();
+        await Cart.deleteMany({userId: req.user.id})
         return res.json(order)
     },
     getDetailPayment: async (req,res)=>{
-         const orderID = req.params.id
-         const order = await Order.findOne({_id: orderID})
-         const carts = order.cart
-         //const carts1 = cart.cart
-        //const carts = await Cart.find({userId: req.user.id})
-
-        //return res.json(carts)
-        return res.render('dashboard/detailOrder',{layout: false, carts: mutipleMongooseToObject(carts), order: mongooseToObject(order)})
+        try{
+            const orderID = req.params.id
+            const order = await Order.findOne({_id: orderID})
+            const carts = order.cart
+            //ghi chú quan trọng: với object array được truy xuất từ object thì không cần toObject
+            //vì chúng không phải đối tượng mongoose, (1 ngày fix)
+           return res.render('dashboard/detailOrder',{layout: false, carts: carts, order: mongooseToObject(order)})
+       
+        }
+        catch(err){
+            return res.json({msg: err})
+        }
     }
 
 }

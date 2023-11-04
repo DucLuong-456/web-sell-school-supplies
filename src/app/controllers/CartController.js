@@ -39,7 +39,7 @@ const CartController ={
     getPay: async(req,res)=>{
         const carts = await Cart.find({});
         const SoLuongSP={SoLuongSP: await Cart.find({}).count()};
-        res.render('menu/thanhToan',{carts: mutipleMongooseToObject(carts),SoLuongSP});
+        res.render('menu/thanhtoanrieng',{carts: mutipleMongooseToObject(carts),SoLuongSP});
     }
 }
 

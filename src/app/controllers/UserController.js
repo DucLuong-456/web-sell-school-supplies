@@ -21,8 +21,6 @@ const UserController = {
     }
     ,
     getRegister: async (req, res)=>{    
-        //res.send("sucessfully");    
-        //layout: false / bo header v footer default
         res.render('login/register',{layout: false});
     },
 
@@ -32,16 +30,16 @@ const UserController = {
 
     createUser: async(req,res)=>{
         try{
-            const {name, email,password} = req.body;
+            const {name, email,password,address, phone_number} = req.body;
             const user= await users.findOne({name: name});
-            console.log(user)
+            //console.log(user)
             if(user) return res.json("msg: Đã tồn tại tài khoản");
             //logic
             if(password.length <6) return res.json("msg: Mat khau < 6 ki tu");
             
             const passwordHash = await bcrypt.hash(password,10);
             const newUser = new users({
-                name, email, password: passwordHash
+                name, email, password: passwordHash, address, phone_number
             })
             await newUser.save();
             //res.json("msg: tao tài khoản thành công");

@@ -86,7 +86,7 @@
                         </div>
                         <div class="add_quantity">
                             <i class="fa-solid fa-minus" onclick="sub()"></i>
-                            <span class="soluong">1</span>
+                            <span id="soluong" onclick="muaclick()">1</span>
                             <i class="fa-solid fa-plus" onclick="plus()"></i>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                             <input type="text" value="{{books._id}}" name="productId" id="productId" hidden>
                             <button type="submit" id="add_to_cart"
                                 style="border: none; text-decoration: none; background-color: #ffff; all: unset;"
-                                onclick="addcart()">
+                                >
                                 Thêm vào giỏ hàng
                             </button>
                             {{!--<span>Thêm vào giỏ hàng</span> --}}
@@ -383,7 +383,7 @@
     var comment_id = document.querySelector('.comment_id');
     var list_comment = document.querySelector('.list_comment li');
     var giaban = document.querySelector('.cost_current span');
-    var soluong = document.querySelector('.soluong');
+    var soluong = document.querySelector('#soluong');
     var postSL = document.querySelector('#postSL');
     var add_to_cartDOM = document.querySelector('#add_to_cart')
     var buy_nowDOM = document.querySelector('#buy_now')
@@ -409,17 +409,13 @@
     }
 
 
-    function addcart() {
-        postSL.value = parseInt(soluong.innerHTML);
-    }
-
     //Xử lý submit- add to cart
     var nameInput = document.querySelector('#name').value
     var imageInput = document.querySelector('#image').value
     var costInput = document.querySelector('#cost').value
     var _idInput = document.querySelector('#productId').value
 
-    var soluongmuaInput = soluong.innerHTML
+    
     add_to_cartDOM.addEventListener('click', async (e) => {
         e.preventDefault()// Ngăn chặn hành vi mặc định của sự kiện submit
         //console.log(1)
@@ -431,7 +427,7 @@
                 alert("Bạn hãy đăng nhập trước khi thêm vào giỏ hàng!");
             } else {
                 // Xử lý logic khi đăng nhập thành công
-                let result = await axios.post('http://localhost:3000/cart/addcart', { productId: _idInput, name: nameInput, image: imageInput, giaBan: costInput, soLuong: soluongmuaInput })
+                let result = await axios.post('http://localhost:3000/cart/addcart', { productId: _idInput, name: nameInput, image: imageInput, giaBan: costInput, soLuong: soluong.innerHTML })
                 if (result.data.status == false)
                     return alert(result.data.msg)
                 else {

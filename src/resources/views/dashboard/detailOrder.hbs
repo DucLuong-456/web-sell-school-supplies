@@ -2,7 +2,8 @@
     .info_order {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+        margin-top: 10px;
     }
 
     .info_order h4 {
@@ -41,14 +42,14 @@
 <div>
     <h3>Mã đơn hàng: {{order._id}}</h3>
     <div class="info_order">
-        <div style="cot1">
-            <h4>Tên: {{order.name}}</h4>
-            <h4>SĐT: {{order.phone_number}}</h4>
-            <h4>Email: {{order.email}}</h4>
+        <div class="cot1">
+            <h4>Tên:</h4> <span> {{order.name}}</span>
+            <h4>SĐT: </h4> <span>{{order.phone_number}}</span>
+            <h4>Email: </h4><span>{{order.email}}</span>
         </div>
         <div class="cot2">
-            <h4>Address: {{order.address}}</h4>
-            <h4>Ngày giao:{{order.createAt}}</h4>
+            <h4>Address: </h4> <span>{{order.address}}</span>
+            <h4 >Ngày đặt: </h4> <span class="order_date">{{order.createdAt}}</span>
         </div>
     </div>
     <br>
@@ -75,8 +76,27 @@
             {{/each}}
         </tbody>
     </table>
-<h4>Hình thức vận chuyển: flash ship</h4>
-<h4>Phí vận chuyển: 20.000 đ</h4>
-<h4>Giá trị đơn hàng: <span id="total_money"></span></h4> <h4>Tổng giá trị đơn hàng: <span id="total_order_money"></span></h4>
+    <div class="info_order">
+    <div class="cot1">
+        <h4>Hình thức vận chuyển: flash ship</h4>
+        <h4>Phí vận chuyển: 20.000 đ</h4>
+    </div>
+    <div class="cot2">
+        <h4>Giá trị đơn hàng: <span id="total_money"></span></h4>
+        <h4>Tổng giá trị đơn hàng: <span id="total_order_money"></span></h4>
+
+    </div>
+
+    </div>
+<button><a href="/dashboard/orders">Quay lại</a></button>
 <button>Xác nhận đơn</button>
 </div>
+
+<script>
+    var order_dateDOM = document.querySelectorAll('.order_date')
+    order_dateDOM.forEach((item)=>{
+    var date = new Date(item.innerHTML)
+    item.innerHTML = date.getDate() +  "/" + date.getMonth() + "/" + date.getFullYear() +' | '+ date.getHours() + ":" + date.getMinutes()
+
+    })
+</script>

@@ -6,7 +6,7 @@ const cart = new Schema({
     masanpham:{type: String, maxLength: 255},
     name: {type: String, maxLength: 255},
     giaBan:{type: String, maxLength: 255},
-    soLuong:{type: Number, default:1},
+    soLuong:{type: String, default:1},
     image: {type: String},
     userId: {type: String},
 }, {
