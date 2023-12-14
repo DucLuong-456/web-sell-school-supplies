@@ -40,7 +40,9 @@
     }
 </style>
 <div>
-    <h3>Mã đơn hàng: {{order._id}}</h3>
+    <h1 style="text-align: center;">Chi tiết đơn hàng</h1>
+    <h2>Mã đơn hàng:</h2>
+    <h3 id="order_id">{{order._id}}</h3>
     <div class="info_order">
         <div class="cot1">
             <h4>Tên:</h4> <span> {{order.name}}</span>
@@ -69,16 +71,16 @@
                 <td>{{sum @index 1}}</td>
                 <td>{{this.name}}</td>
                 <td><img src="/img/{{this.image}}" alt="ảnh"></td>
-                <td>{{this.giaBan}}</td>
-                <td>{{this.soLuong}}</td>
-                <td>{{this.giaBan}}</td>
+                <td class="col_price">{{this.giaBan}}</td>
+                <td class="col_count">{{this.soLuong}}</td>
+                <td class="col_total"></td>
             </tr>
             {{/each}}
         </tbody>
     </table>
     <div class="info_order">
     <div class="cot1">
-        <h4>Hình thức vận chuyển: flash ship</h4>
+        <h4>Hình thức vận chuyển: Flash Ship</h4>
         <h4>Phí vận chuyển: 20.000 đ</h4>
     </div>
     <div class="cot2">
@@ -89,14 +91,46 @@
 
     </div>
 <button><a href="/dashboard/orders">Quay lại</a></button>
-<button>Xác nhận đơn</button>
+<button id="correct_order">Xác nhận đơn</button>
 </div>
-
+{{!-- Axios --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+    integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
+    var total_money_DOM = document.querySelector('#total_money')
+    var total_order_money_DOM = document.querySelector('#total_order_money')
+    var col_price_DOM = document.querySelectorAll('.col_price')
+    var col_count_DOM = document.querySelectorAll('.col_count')
+    var col_total_DOM = document.querySelectorAll('.col_total')
+    var correct_order_DOM = document.querySelector('#correct_order')
+    var order_id_DOM = document.querySelector('#order_id')
+    var total_pay=0
+
+    for(var i = 0; i< col_total_DOM.length; i++){
+        col_total_DOM[i].innerHTML = parseFloat(col_price_DOM[i].innerHTML)* parseInt(col_count_DOM[i].innerHTML)
+        total_pay+=parseFloat(col_total_DOM[i].innerHTML)
+    }    
+
+    total_money_DOM.innerHTML= total_pay
+    total_order_money_DOM.innerHTML=total_pay+20000
+
     var order_dateDOM = document.querySelectorAll('.order_date')
     order_dateDOM.forEach((item)=>{
     var date = new Date(item.innerHTML)
     item.innerHTML = date.getDate() +  "/" + date.getMonth() + "/" + date.getFullYear() +' | '+ date.getHours() + ":" + date.getMinutes()
-
     })
+
+    correct_order_DOM.addEventListener('click', async (e) => {
+        e.preventDefault()// Ngăn chặn hành vi mặc định của sự kiện submit
+        //console.log(1)
+        try {
+            const res = await axios.put(`http://localhost:3000/payment/${order_id_DOM.innerHTML}`);
+            if(res)
+                    window.location.href = 'http://localhost:3000/dashboard/orders';
+
+        } catch (err) {
+            console.log(err);
+        }
+    });
 </script>

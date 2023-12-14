@@ -9,6 +9,7 @@ paymentRouter.get('/getpayment',auth,PaymentController.getPayment);
 paymentRouter.get('/detailorder/:id',auth,PaymentController.getDetailPayment);
 paymentRouter.get('/getallpayment',auth,authAdmin, PaymentController.getAllPayment);
 paymentRouter.post('/create',auth, PaymentController.createPayment);
+paymentRouter.put('/:id',PaymentController.changeStatusOrder)
 paymentRouter.get('/',auth, PaymentController.renderPayment);
 
 module.exports = paymentRouter;

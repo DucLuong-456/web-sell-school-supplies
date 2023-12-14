@@ -51,7 +51,18 @@ const PaymentController ={
             return res.json({msg: err})
         }
     }
-
+    ,
+    changeStatusOrder: async (req,res)=>{
+        try {
+            const orderID = req.params.id
+            const orderStatusUpdate= await Order.findOneAndUpdate({_id: orderID},{status: "Đang giao"},{new: true})
+            if(!orderStatusUpdate) return res.json({msg: "Không tìm thấy đơn hàng!"})
+            return res.json({msg: "Change status success!"})
+        } catch (error) {
+            return res.json({msg: error})
+            
+        }
+    }
 }
 
 module.exports = PaymentController

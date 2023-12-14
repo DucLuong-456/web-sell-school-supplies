@@ -40,8 +40,8 @@ const HomeController = {
         else{
             user= await jwt.verify(token,'secretKey');
         }
-        console.log(user)
-        res.render('partials/header',{  books: mutipleMongooseToObject(books),userInfor: user});
+        //console.log(user)
+        res.render('partials/header',{data: mutipleMongooseToObject(books),userInfor: user});
     
     }
     

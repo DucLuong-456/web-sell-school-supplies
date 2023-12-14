@@ -18,9 +18,9 @@ const order = new Schema({
     },
     status:{
         type: String,
-        default: "Đang giao"
+        default: "Đang chờ"
     },
-    hinhthuc: {
+    payment: {
       type: String, 
       default: "COD"}
 },{

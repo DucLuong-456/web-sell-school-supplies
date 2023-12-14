@@ -9,6 +9,10 @@ dashboardRouter.get('/products',auth,authAdmin, dashboardController.manageProduc
 dashboardRouter.get('/users',auth,authAdmin, dashboardController.manageUsers);
 dashboardRouter.get('/orders',auth,authAdmin, dashboardController.manageOrder);
 dashboardRouter.get('/categories',auth,authAdmin, dashboardController.manageCategories);
+dashboardRouter.get('/transaction',auth,authAdmin, dashboardController.manageTransac);
+dashboardRouter.get('/sales',auth,authAdmin, dashboardController.manageSales);
+dashboardRouter.get('/analysts',auth,authAdmin, dashboardController.manageAnalysts);
+
 dashboardRouter.delete('/bill/:id',auth,authAdmin, dashboardController.deleteBill);
 dashboardRouter.delete('/user/:id',auth,authAdmin, dashboardController.deleteUser);
 

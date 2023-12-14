@@ -157,8 +157,8 @@ const UserController = {
             user= await jwt.verify(token,'secretKey');
         }
         const user_role = await users.findOne({_id: user.id});
-        console.log(user_role);
-        res.json({UserInfor: user,user_role});
+        //console.log(user_role);
+        return res.json({UserInfor: user,user_role});
     }
     ,
     refreshToken: async(req,res)=>{

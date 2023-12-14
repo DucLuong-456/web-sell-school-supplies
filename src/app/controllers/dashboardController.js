@@ -47,6 +47,16 @@ const dashboardController=  {
                 categories: mutipleMongooseToObject(categories)
          });
        }
+    ,
+    manageTransac: (req,res)=>{
+        res.render('updating',{layout: false})
+   },
+   manageSales: (req,res)=>{
+    res.render('updating',{layout: false})
+    }
+    ,manageAnalysts: (req,res)=>{
+        res.render('updating',{layout: false})
+    }
 }
 
 module.exports = dashboardController;

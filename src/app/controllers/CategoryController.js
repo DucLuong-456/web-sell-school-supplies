@@ -1,6 +1,6 @@
 
 const Category = require('../models/CategoryModel')
-
+const Product = require('../models/ProductModel')
 const {mongooseToObject,mutipleMongooseToObject} = require('../../util/mongoose')
 
 const CategoryController ={
@@ -55,8 +55,11 @@ createCategory: async(req, res, next)=>{
       }
     }
     ,
-      deleteCategory: async(req, res, next)=>{
+    deleteCategory: async(req, res, next)=>{
         try {
+          let categoryID = req.params.id
+          const product = await Product.find({})
+          if(product) return res.status(500).json({msg: "Do not delete category!"})
           await Category.deleteOne({_id: req.params.id})
           return res.redirect('/dashboard/categories')
         } catch (error) {

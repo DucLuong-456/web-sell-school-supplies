@@ -59,7 +59,7 @@
                 </div>
                 {{!-- search product --}}
                 <ul id="product-list">
-                    {{#each books}}
+                    {{#each data}}
                     <li>
                         <div class="product_item_search">
                             <div class="product_image">
@@ -70,21 +70,6 @@
                                         href="/book/dodunghoctap/{{this.slug}}">{{this.name}}</a></span>
                                 <br>
                                 <span style="color: orangered;">{{this.giaban}} đ</span>
-                            </div>
-                        </div>
-                    </li>
-                    {{/each}}
-                    {{#each fashions}}
-                    <li>
-                        <div class="product_item_search">
-                            <div class="product_image">
-                                <img src="/img/{{this.image}}" alt="but chi">
-                            </div>
-                            <div class="product_item_text" style="margin-left: 10px;">
-                                <span style="color: black;" class="product_name_search"><a
-                                        href="/book/docongnghe/{{this.slug}}">{{this.name}}</a></span>
-                                <br>
-                                <span style="color: orangered;">{{this.giaBan}} đ</span>
                             </div>
                         </div>
                     </li>
@@ -214,6 +199,40 @@
     var user_func = document.querySelector('.user_connects_list');
     var user_infor = document.querySelector('.user_name a');
     var user_notify_list = document.querySelector('.user_notify_list');
+    var user_cart_title_DOM = document.querySelector('.header_user_cart')
+    //Lấy thông tin san phẩm
+    try{
+            fetch("http://localhost:3000/book/allproduct")
+                .then(res => res.json())
+                .then(data => {
+                    let listProduct='';
+                    data.forEach((item)=>{
+                        listProduct+= `
+                        <li>
+                        <div class="product_item_search">
+                            <div class="product_image">
+                                <img src="/img/${item.image}" alt="but chi">
+                            </div>
+                            <div class="product_item_text" style="margin-left: 10px;">
+                                <span style="color: black;" class="product_name_search"><a
+                                        href="/book/dodunghoctap/${item.slug}">${item.name}</a></span>
+                                <br>
+                                <span style="color: orangered;">${item.giaban} đ</span>
+                            </div>
+                        </div>
+                    </li>`
+                    })
+                    document.querySelector('#product-list').innerHTML= listProduct
+                })
+                .catch(err=> console.log(err))
+
+    }
+    catch(err){
+        console.log(err)
+    }
+    
+
+
     //lay thong tin tai khoan
     try {
         //https://nckh-ecommerce-web.onrender.com su dung khi deloy
@@ -224,11 +243,32 @@
                 if (user_infor.innerHTML != 'Tài khoản') {
                     user_func.style.display = 'none';
                     user_notify_list.style.display = 'none';
-
                 }
             })
 
-    } catch (err) { console.log(err.message) }
+    } catch (err) 
+    { console.log(err.message) }
+
+    var is_check_cart = new Promise((reslove,reject)=>{
+        const user = fetch("http://localhost:3000/user/getUserInfor")
+        if(user) 
+            reslove(user)
+        else
+            reject("Loi")
+
+    })
+    is_check_cart
+        .then(res=>res.json())
+        .then((data)=>{
+            if(data.UserInfor.username == 'Tài khoản')
+                user_cart_title_DOM.addEventListener('click',(e)=>{
+                    e.preventDefault()
+                    alert("Vui lòng đăng nhập để xem giỏ hàng!")
+                })
+                
+        })
+        .catch(err=> console.log(err))
+
     //chuc nang tim kiem san pham
 
     var product_list = document.querySelector('#product-list');
