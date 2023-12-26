@@ -3,14 +3,21 @@ const Orderdetail = require('../models/OrderDetailModel')
 const User = require('../models/userModel')
 const {mongooseToObject,mutipleMongooseToObject} = require('../../util/mongoose')
 const Cart = require('../models/cartModel')
+const paypal = require('paypal-rest-sdk');
+
+paypal.configure({
+  'mode': 'sandbox', //sandbox or live
+  'client_id': 'Aa8vShLXur97hpRITy-40QbR01jhmCX3SOdtM4gAg2KuwdblzEtuvgiVy-VRdIi-PWjv1ttUvHYzXBlI',
+  'client_secret': 'EIKh3HT9B4rpm0H1LLiL1MqN0ePJnIYiO9jXZcbVyZeE9Ph75mAzJU09y29mgSzohHDhW1FiLFBIr-gF'
+});
+
 const PaymentController ={
     renderPayment: async (req,res)=>{
         //const userId = req.user.id
         const carts = await Cart.find({userId: req.user.id})
         const soluong = carts.length
         return res.render('menu/thanhToan', {carts: mutipleMongooseToObject(carts),soluong: soluong })
-    }
-    ,
+    },
     getAllPayment: async (req,res)=>{
         const orders = await Order.find({})
         return res.json(orders)
@@ -35,7 +42,7 @@ const PaymentController ={
         })
         await order.save();
         await Cart.deleteMany({userId: req.user.id})
-        return res.json(order)
+        return res.send("ORDER SUCCESS!")
     },
     getDetailPayment: async (req,res)=>{
         try{
@@ -45,13 +52,11 @@ const PaymentController ={
             //ghi chú quan trọng: với object array được truy xuất từ object thì không cần toObject
             //vì chúng không phải đối tượng mongoose, (1 ngày fix)
            return res.render('dashboard/detailOrder',{layout: false, carts: carts, order: mongooseToObject(order)})
-       
         }
         catch(err){
             return res.json({msg: err})
         }
-    }
-    ,
+    },
     changeStatusOrder: async (req,res)=>{
         try {
             const orderID = req.params.id
@@ -60,8 +65,102 @@ const PaymentController ={
             return res.json({msg: "Change status success!"})
         } catch (error) {
             return res.json({msg: error})
-            
         }
+    },
+    payOnline: async(req,res)=>{
+        //1)dau tien lay id nguoi dung,
+        //2) loc san pham trong gio hang theo nguoi dung => cart by userID
+        //3) bien doi object:
+            /*          [{
+                            "name": "Iphone 4S",
+                            "sku": "001",
+                            "price": "25.00",
+                            "currency": "USD",
+                            "quantity": 1
+                        }]
+            */
+        let cartByUserId = await Cart.find({userId: req.user.id})
+        let total=0; //VND => USD
+        
+        function convertVNDtoUSD(amountVND) {
+            var exchangeRate = 23000;
+            var amountUSD = amountVND / exchangeRate;
+            amountUSD = amountUSD.toFixed(2);
+            return amountUSD;
+          }
+          
+        let cartForPaypal = cartByUserId.map((item)=>{
+            var priceForUSD = convertVNDtoUSD(item.giaBan)
+            total=total + parseFloat(item.giaBan);
+            return {
+                    "name": `${item.name}`,
+                    "sku": "001",
+                    "price": `${priceForUSD}`,
+                    "currency": "USD",
+                    "quantity": item.soLuong
+            }
+        })
+        
+        const create_payment_json = {
+            "intent": "sale",
+            "payer": {
+                "payment_method": "paypal"
+            },
+            "redirect_urls": {
+                "return_url": "http://localhost:3000/payment/paysuccess",
+                "cancel_url": "http://localhost:3000/payment/cancel"
+            },
+            "transactions": [{
+                "item_list": {
+                    "items": cartForPaypal
+                },
+                "amount": {
+                    "currency": "USD",
+                    "total": `${convertVNDtoUSD(total)}`
+                },
+                "description": "Iphone cũ giá siêu rẻ"
+            }]
+        };
+    
+        paypal.payment.create(create_payment_json, function (error, payment) {
+            if (error) {
+                throw error;
+            } else {
+                for (let i = 0; i < payment.links.length; i++) {
+                    if (payment.links[i].rel === 'approval_url') {
+                        res.redirect(payment.links[i].href);
+                    }
+                }
+    
+            }
+        });  
+
+    },
+    paySuccess: async(req,res)=>{
+    const payerId = req.query.PayerID;
+    const paymentId = req.query.paymentId;
+
+    const execute_payment_json = {
+        "payer_id": payerId,
+        "transactions": [{
+            "amount": {
+                "currency": "USD",
+                "total": "25.00"
+            }
+        }]
+    };
+    paypal.payment.execute(paymentId, execute_payment_json, function(error, payment) {
+        if (error) {
+            console.log(error.response);
+            throw error;
+        } else {
+            console.log(JSON.stringify(payment));
+            res.send('Success (Mua hàng thành công)');
+        }
+    });
+    },
+    payCancel: async(req,res)=>{
+        res.send('Cancelled (Đơn hàng đã hủy)')
     }
 }
 

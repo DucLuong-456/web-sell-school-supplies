@@ -62,18 +62,28 @@
             <div class="col">
                 <div class="tongtien">
                     Tổng tiền:
-                    <span>39.000.0000</span>
+                    <span>30.000.0000</span>
                 </div>
                 <div class="thanhtoan">
                     <button><a href="/payment">Thanh toán</a></button>
+                </div>
+                <br>
+                <div class="button">
+                    <form id="paypal-form" action="/payment/payonline" method="post">
+                        <img src="/img/Paypal-Donate-Elise-Ever-After.png" width="200" id="paypal-btn" style="cursor: pointer;" alt="">
+                    </form>
                 </div>
             </div>
 
         </div>
     </div>
-
 </body>
 <script>
+    var paypal_btn_DOM = document.querySelector('#paypal-btn')
+    paypal_btn_DOM.addEventListener('click',(e)=>{
+        document.querySelector('#paypal-form').submit();
+    })
+
     var giaban = document.querySelectorAll('.dongia');
     var arr_giaban = [];
     for (var i = 0; i < giaban.length; i++)
