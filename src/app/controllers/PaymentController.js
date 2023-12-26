@@ -85,13 +85,13 @@ const PaymentController ={
         function convertVNDtoUSD(amountVND) {
             var exchangeRate = 23000;
             var amountUSD = amountVND / exchangeRate;
-            amountUSD = amountUSD.toFixed(2);
+            amountUSD = Math.round(amountUSD)
             return amountUSD;
           }
           
         let cartForPaypal = cartByUserId.map((item)=>{
             var priceForUSD = convertVNDtoUSD(item.giaBan)
-            total=total + parseFloat(item.giaBan);
+            total=  total + parseFloat(item.giaBan)* parseInt(item.soLuong);
             return {
                     "name": `${item.name}`,
                     "sku": "001",
@@ -121,7 +121,9 @@ const PaymentController ={
                 "description": "Iphone cũ giá siêu rẻ"
             }]
         };
-    
+        
+
+        //Xử lý payment method
         paypal.payment.create(create_payment_json, function (error, payment) {
             if (error) {
                 throw error;
@@ -136,24 +138,56 @@ const PaymentController ={
         });  
 
     },
+
     paySuccess: async(req,res)=>{
     const payerId = req.query.PayerID;
     const paymentId = req.query.paymentId;
+
+    //Xử lý bên method GET
+    let cartByUserId = await Cart.find({userId: req.user.id})
+    let total=0; //VND => USD
+    function convertVNDtoUSD(amountVND) {
+            var exchangeRate = 23000;
+            var amountUSD = amountVND / exchangeRate;
+            amountUSD = Math.round(amountUSD)
+            return amountUSD;
+    }
+          
+    cartByUserId.forEach((item)=>{
+            total= total + parseFloat(item.giaBan)* parseInt(item.soLuong);
+    })
+
 
     const execute_payment_json = {
         "payer_id": payerId,
         "transactions": [{
             "amount": {
                 "currency": "USD",
-                "total": "25.00"
+                "total": `${convertVNDtoUSD(total)}`
             }
         }]
     };
-    paypal.payment.execute(paymentId, execute_payment_json, function(error, payment) {
+    paypal.payment.execute(paymentId, execute_payment_json, async(error, payment)=>{
         if (error) {
             console.log(error.response);
             throw error;
         } else {
+            // xử lý đơn hàng
+            const userId = req.user.id
+            const user = await User.findOne({_id: userId})
+            const {name, address, email,phone_number} = user
+            const cart = await Cart.find({userId: req.user.id})
+            let total_money=0;
+            cart.forEach((item)=>{
+                total_money +=parseFloat(item.giaBan) * parseInt(item.soLuong);
+            })
+            let status ="completed"
+            let payment="Online paypal"
+            const order = new Order({
+                userID: userId,name, address, email,phone_number,total_money,cart,status,payment
+            })
+            await order.save();
+            await Cart.deleteMany({userId: req.user.id})
             console.log(JSON.stringify(payment));
             res.send('Success (Mua hàng thành công)');
         }

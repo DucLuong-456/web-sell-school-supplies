@@ -11,7 +11,7 @@ paymentRouter.get('/getallpayment',auth,authAdmin, PaymentController.getAllPayme
 paymentRouter.post('/create',auth, PaymentController.createPayment);
 paymentRouter.put('/:id',PaymentController.changeStatusOrder)
 paymentRouter.post('/payonline',auth,PaymentController.payOnline)
-paymentRouter.get('/paysuccess',PaymentController.paySuccess)
+paymentRouter.get('/paysuccess',auth,PaymentController.paySuccess)
 paymentRouter.get('/cancel',PaymentController.payCancel)
 
 
