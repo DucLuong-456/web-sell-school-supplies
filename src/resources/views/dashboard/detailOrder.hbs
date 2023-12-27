@@ -40,7 +40,7 @@
     }
 </style>
 <div>
-    <h1 style="text-align: center;">Chi tiết đơn hàng</h1>
+    <h1 style="text-align: center; background: rgb(205, 79, 12)">CHI TIẾT ĐƠN HÀNG</h1>
     <h2>Mã đơn hàng:</h2>
     <h3 id="order_id">{{order._id}}</h3>
     <div class="info_order">
@@ -52,6 +52,7 @@
         <div class="cot2">
             <h4>Address: </h4> <span>{{order.address}}</span>
             <h4 >Ngày đặt: </h4> <span class="order_date">{{order.createdAt}}</span>
+            <h4 >Trạng thái:</h4> <span id="status-order">{{order.status}}</span>
         </div>
     </div>
     <br>
@@ -80,6 +81,7 @@
     </table>
     <div class="info_order">
     <div class="cot1">
+        <h4>Hình thức thanh toán: {{order.payment}}</h4>
         <h4>Hình thức vận chuyển: Flash Ship</h4>
         <h4>Phí vận chuyển: 20.000 đ</h4>
     </div>
@@ -105,6 +107,12 @@
     var col_total_DOM = document.querySelectorAll('.col_total')
     var correct_order_DOM = document.querySelector('#correct_order')
     var order_id_DOM = document.querySelector('#order_id')
+    var status_order_DOM = document.querySelector('#status-order')
+
+    if(status_order_DOM.innerHTML != 'Đang chờ'){
+        correct_order_DOM.style.display= 'none' 
+    }
+    
     var total_pay=0
 
     for(var i = 0; i< col_total_DOM.length; i++){

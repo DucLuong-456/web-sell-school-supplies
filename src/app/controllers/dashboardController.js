@@ -36,7 +36,7 @@ const dashboardController=  {
              });
            },
     manageOrder: async(req, res, next)=> {       
-            const orders= await Order.find({}); 
+            const orders= await Order.find({}).sort('-createdAt'); 
             res.render('dashboard/manage_order',{layout: false,
                 orders: mutipleMongooseToObject(orders)
          });

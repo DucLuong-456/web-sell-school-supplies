@@ -24,7 +24,7 @@ const PaymentController ={
     },
     getPayment: async (req,res)=>{
         const userId = req.user.id
-        const orders = await Order.find({userID: userId})
+        const orders = await Order.find({userID: userId}).sort('-createdAt')
         return res.render('payment/my_list_order',{orders: mutipleMongooseToObject(orders)})
     },
     createPayment: async (req,res)=>{
@@ -42,7 +42,7 @@ const PaymentController ={
         })
         await order.save();
         await Cart.deleteMany({userId: req.user.id})
-        return res.send("ORDER SUCCESS!")
+        //return res.send("ORDER SUCCESS!")
     },
     getDetailPayment: async (req,res)=>{
         try{
@@ -121,7 +121,6 @@ const PaymentController ={
                 "description": "Iphone cũ giá siêu rẻ"
             }]
         };
-        
 
         //Xử lý payment method
         paypal.payment.create(create_payment_json, function (error, payment) {
@@ -133,7 +132,6 @@ const PaymentController ={
                         res.redirect(payment.links[i].href);
                     }
                 }
-    
             }
         });  
 
@@ -189,7 +187,7 @@ const PaymentController ={
             await order.save();
             await Cart.deleteMany({userId: req.user.id})
             console.log(JSON.stringify(payment));
-            res.send('Success (Mua hàng thành công)');
+            res.render('payment/orderSuccess',{layout: false});
         }
     });
     },

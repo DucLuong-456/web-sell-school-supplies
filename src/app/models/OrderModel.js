@@ -18,12 +18,12 @@ const order = new Schema({
     },
     status:{
         type: String,
-        default: "Đang chờ"
+        default: "Đang chờ xác nhận"
     },
     payment: {
       type: String, 
       default: "COD"}
-},{
+    },{
         timestamps: true
       });
 module.exports = mongoose.model('orders', order);
